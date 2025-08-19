@@ -1,0 +1,91 @@
+[
+  {
+    "id": 1,
+    "titulo": "Previsão do tempo",
+    "texto": "Desenvolvido com JavaScript Vanila",
+    "gif": "assets/imagens/projetos/1/previsao-tempo.gif",
+    "video": "assets/imagens/projetos/1/previsao-tempo.mp4",
+    "capa": "assets/imagens/carrousel/capa-tempo.png",
+    "descricao": "Aplicação web simples e intuitiva para consultar as condições climáticas de qualquer cidade do mundo em tempo real, consumindo a API OpenWeatherMap.",
+    "link": "https://previsao-do-tempo-sigma.vercel.app",
+    "link-repositorio": "https://github.com/marcelloprado/previsao-tempo"
+  },
+  {
+    "id": 2,
+    "titulo": "Caldinhos com Amor",
+    "texto": "Site para apresentação dos caldos à venda",
+    "gif": "assets/imagens/projetos/2/caldinhos.gif",
+    "video": "assets/imagens/projetos/2/caldinhos.mp4",
+    "capa": "assets/imagens/carrousel/capa-caldinhos.png",
+    "descricao": "Era para ser um site para venda de caldos congelados que minha esposa vendia na época.",
+    "link": "https://caldinhoscomamor.vercel.app/",
+    "link-repositorio": "https://github.com/marcelloprado/caldinhoscomamor"
+  },
+  {
+    "id": 3,
+    "titulo": "Calculadora IMC",
+    "texto": "Desenvolvido com JavaScript",
+    "gif": "assets/imagens/projetos/3/Calc-imc.gif",
+    "video": "assets/imagens/projetos/3/Calc-imc.mp4",
+    "capa": "assets/imagens/carrousel/capa-imc.png",
+    "descricao": "frontend",
+    "link": "#",
+    "link-repositorio": "https://github.com/marcelloprado/calc-imc-react"
+  },
+  {
+    "id": 4,
+    "titulo": "Quiz de programação",
+    "texto": "Desenvolvido com HTML, CSS e JS",
+    "gif": "assets/imagens/projetos/4/Projeto-Quiz.gif",
+    "video": "assets/imagens/projetos/4/Projeto-Quiz.mp4",
+    "capa": "assets/imagens/carrousel/capa-quiz.png",
+    "descricao": "Projeto desenvolvido com a triad html, css e javascript blá blá blá...",
+    "link": "#",
+    "link-repositorio": "https://github.com/marcelloprado/quiz-com-react"
+  },
+  {
+    "id": 5,
+    "titulo": "Urna Eletrônica",
+    "texto": "Desenvolvido com HTML, CSS e JS",
+    "gif": "assets/imagens/projetos/5/urna-eletronica.gif",
+    "video": "assets/imagens/projetos/5/urna-eletronica.mp4",
+    "capa": "assets/imagens/carrousel/capa-urna.png",
+    "descricao": "projeto B7WEB",
+    "link": "https://urna-eletronica-c2o5tkb5p-marcello-prados-projects.vercel.app/",
+    "link-repositorio": "https://github.com/marcelloprado/urna-eletronica"
+  },
+  {
+    "id": 6,
+    "titulo": "Comunidade Python",
+    "texto": "Primeiro projeto desenvolvido com python, Flask e SQL",
+    "gif": "assets/imagens/projetos/6/comunidade.gif",
+    "video": "assets/imagens/projetos/6/comunidade.mp4",
+    "capa": "assets/imagens/carrousel/capa-comunidade.png",
+    "descricao": "backend",
+    "link": "https://projetopythoncomunidade-production.up.railway.app/",
+    "link-repositorio": "https://github.com/marcelloprado/Projetopythoncomunidade"
+  },
+  {
+    "id": 7,
+    "titulo": "Administração Django",
+    "texto": "Django de um projeto Eccomerce que está logo após esse",
+    "gif": "assets/imagens/projetos/7/admin-Django.gif",
+    "video": "assets/imagens/projetos/7/admin-Django.mp4",
+    "capa": "assets/imagens/carrousel/capa-django.png",
+    "descricao": "Essa é a parte da administração do Django de um projeto Ecommerce que está logo apos esse...",
+    "link": "#",
+    "link-repositorio": "https://github.com/marcelloprado/ecommerce-python"
+  },
+  {
+    "id": 8,
+    "titulo": "Eccomerce Reserva",
+    "texto": "Replica do site da loja Reserva de Roupas",
+    "gif": "assets/imagens/projetos/8/capa-reserva.gif",
+    "video": "assets/imagens/projetos/8/reserva-ecommerce.mp4",
+    "capa": "assets/imagens/carrousel/capa-reserva.png",
+    
+    "descricao": "Projeto desenvolvido com Django, HTML, CSS e JS, replicando o site da loja Reserva de Roupas.",
+    "link": "#",
+    "link-repositorio": "https://github.com/marcelloprado/ecommerce-python"
+  }
+]

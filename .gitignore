@@ -1,0 +1,25 @@
+# Created by venv; see https://docs.python.org/3/library/venv.html
+# Ambientes virtuais
+venv/
+.venv/
+
+# Cache do Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Arquivos temporários
+*.log
+*.sqlite3
+instance/
+.env
+
+# Configurações do VSCode
+.vscode/
+
+# Node (se usar frontend junto)
+node_modules/
+dist/
+build/
+

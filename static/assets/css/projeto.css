@@ -1,0 +1,66 @@
+/*^ Ícones das Tecnologias */
+.container-tecnologias {
+    margin-top: 55px;
+    border-radius: 15px;
+}
+.container-tecnologias h3 {
+    padding: 30px;
+    text-align: center;
+}
+.icones {
+    padding: 55px;
+}
+.icones h3 {
+    padding-bottom: 30px;
+}
+.tech-icon {
+    transition: transform 0.3s ease;
+}
+.tech-icon:hover {
+    transform: scale(1.2);
+}
+.tech-icon.git {
+    color: rgb(216, 58, 0);
+}
+.tech-icon.bootstrap {
+    color: #563d7c;
+}
+
+
+/*^ Carrousel */
+
+.carousel-item {
+    position: relative; /* garante que o texto use o slide como referência */
+    border: 2px solid  #3b869b;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.carousel-text-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.3));
+    color: white;
+    padding: 20px 30px;
+    border-radius: 15px;
+    max-width: 80%;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+    box-shadow: 5px 5px 20px 1px #849aa0;
+}
+.carousel-text-center h5 {
+    margin: 0 0 10px;
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+.carousel-text-center p {
+    margin: 0;
+    font-size: 1rem;
+}
+.carousel-control-next-icon, .carousel-control-prev-icon {
+    border: 2px solid #282c34;
+    border-radius: 50%;
+    background-color: #3b869b;
+}

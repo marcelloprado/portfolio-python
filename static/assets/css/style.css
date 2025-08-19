@@ -1,0 +1,18 @@
+/* Estilos globais */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: linear-gradient(to right, #c7e0f8, #cdd1f1);
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+:root{
+    --primary-color: #61dafb;
+    --secondary-color: #282c34;
+    
+}

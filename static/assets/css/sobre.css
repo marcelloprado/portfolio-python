@@ -1,0 +1,17 @@
+/*^ Seção Sobre */
+main {
+    padding: 30px;
+    color: #282c34;
+    display: flex;
+    justify-content: center;
+}
+.section-about {
+    background-color: #3b869b;
+    padding: 22px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    max-width: 35rem;
+    align-items: center;
+}

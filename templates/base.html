@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="{{ url_for('static', filename='assets/imagens/favicon.ico') }}" />
+    <title>{% block title %}Portfólio Marcello Prado Muller {% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/sobre.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/projeto.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/projetosViews.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/contato.css') }}">
+
+</head>
+{% block body %}
+<body>
+    <div class="d-flex flex-column min-vh-100">
+        <nav>
+            <ul>
+                <li><a href="/">Início</a></li>
+                <li><a href="/sobre">Sobre</a></li>
+                <li><a href="/projetos">Projetos</a></li>
+                <li><a href="/contato">Contato</a></li>
+            </ul>
+        </nav>
+
+        <main class="container py-5 ">
+            {% block content %}
+            {% endblock %}
+        </main>
+
+        <footer class="mt-auto bg-dark text-white text-center py-3">
+            <p>&copy; 2025 Marcello Prado Muller. Todos os direitos reservados.</p>
+            <p>Desenvolvido com <i class="fas fa-heart text-danger"></i> por Marcello Prado Muller</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+</body>
+{% endblock %}
+</html>

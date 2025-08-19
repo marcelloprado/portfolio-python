@@ -1,0 +1,72 @@
+.contato-container {
+    max-width: 700px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.contato-container:hover {
+    transform: translateY(-5px);
+}
+
+.redes-sociais {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.social-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 20px;
+    width: 120px;
+    height: 120px;
+    background: #f5f5f5;
+    border-radius: 12px;
+    font-size: 2rem;
+    text-decoration: none;
+    color: #333;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.social-card span {
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.social-card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    color: #fff;
+}
+
+/* Centralizar o card do WhatsApp sozinho */
+.social-card.mx-auto {
+    margin: 20px auto;
+    display: block;
+}
+
+/* Separador mais suave */
+hr {
+    border: none;
+    height: 2px;
+    background: #eee;
+    margin: 40px 0;
+}
+
+/* Cores personalizadas */
+.social-card.whatsapp { color: #25d366; }
+.social-card.whatsapp:hover { background: #98e2b3; }
+
+.social-card.github { color: #333; }
+.social-card.github:hover { background: #333; color: #fff; }
+
+.social-card.vercel { color: #000; }
+.social-card.vercel:hover { background: #000; color: #fff; }

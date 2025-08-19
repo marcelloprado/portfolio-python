@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %} Contatos {% endblock %}
+
+{% block content %}
+<div class="contato-container text-center mt-5 shadow-lg">
+    <!-- Contato -->
+    <h2 class="mb-3">Entre em Contato</h2>
+    <p class="text-muted">Clique no ícone abaixo para falar comigo no WhatsApp:</p>
+    
+    <a href="https://wa.me/5547999281500" target="_blank" class="social-card whatsapp mx-auto">
+        <i class="fab fa-whatsapp"></i>
+        <span>WhatsApp</span>
+    </a>
+
+    <hr class="my-5">
+
+    <!-- Projetos -->
+    <h3 class="mb-3">Meus Projetos</h3>
+    <p class="text-muted">Confira meus repositórios e portfólio:</p>
+
+    <div class="redes-sociais d-flex justify-content-center gap-4 mt-4">
+        <!-- GitHub -->
+        <a href="https://github.com/marcelloprado" target="_blank" class="social-card github mx-auto">
+            <i class="fab fa-github"></i>
+            <span>GitHub</span>
+        </a>
+
+        <!-- Vercel -->
+        <a href="https://vercel.com/marcello-prados-projects" target="_blank" class="social-card vercel mx-auto">
+            <i class="fas fa-globe"></i>
+            <span>Vercel</span>
+        </a>
+    </div>
+</div>
+{% endblock %}
