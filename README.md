@@ -59,7 +59,7 @@ gunicorn
 🔗 Acesse online: [Portfólio](https://portfolio-python-swqi.onrender.com/)
 
 * Clone este repositório
-git clone https://github.com/seu-usuario/portfolio-python.git
+git clone (https://github.com/marcelloprado/portfolio-python.git)
 
 * Acesse a pasta do projeto
 cd portfolio-python
