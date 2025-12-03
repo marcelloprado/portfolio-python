@@ -46,8 +46,6 @@ def projeto_detalhe(id):
 
     return render_template("projetoViews.html", projeto=projeto)
 
-if __name__ == '__main__':
-    app.run(debug=True)
     
     #^ Para inicializar o ambiente virtual - venv\Scripts\activate
 #^  Arquivo principal do Flask para rodar o portfólio - python app.py
