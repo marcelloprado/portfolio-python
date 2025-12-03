@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="row align-items-center">
-    <!-- Texto à esquerda -->
+
     <div class="texto-esquerda col-md-7 text-center text-md-start">
         <h1 class="nome-completo">
             Olá, eu sou o <span class="text-primary">Marcello Prado Muller</span>
@@ -13,14 +13,12 @@
         <p class="fst-italic mt-5">✨Transformando ideias em soluções digitais de verdade.</p>
     </div>
 
-    <!-- Imagem à direita -->
     <div class="col-md-5 text-center mt-4 mt-md-0">
         <img src="{{ url_for('static', filename='assets/imagens/perfil/minha-foto.png') }}"
             alt="Foto de Marcello"
             class="img-fluid rounded-circle perfil-img">
     </div>
 
-    <!-- Ícones das tecnologias -->
     <div class="icones my-4 text-center">
         <h3 class="mb-3">Tecnologias usadas nesse projeto</h3>
         <div class="d-flex flex-wrap justify-content-center gap-4">

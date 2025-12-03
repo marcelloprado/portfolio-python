@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Certificados{% endblock %}
+
+{% block content %}
+
+<section class="certificados-section">
+
+  <h1 class="titulo-principal">Meus Certificados</h1>
+
+  <div class="certificados-grid">
+
+    {% for certificado in certificados %}
+      <div class="certificado-item">
+        <img
+          src="{{ url_for('static', filename='assets/imagens/certificados/' ~ certificado) }}"
+          alt="Certificado"
+        />
+      </div>
+    {% endfor %}
+
+  </div>
+
+</section>
+
+{% endblock %}

@@ -1,6 +1,5 @@
-#Arquivo principal do flask
-
 import json
+import os
 from flask import Flask, render_template
 
 app = Flask(__name__)
@@ -22,6 +21,16 @@ def sobre():
 def projetos():
     lista_projetos = carregar_projetos()
     return render_template("projetos.html", projetos=lista_projetos)
+
+@app.route("/certificados")
+def certificados():
+    pasta = "static/assets/imagens/certificados/"
+    arquivos = [
+        arq for arq in os.listdir(pasta)
+        if arq.lower().endswith(('.png', '.jpg', '.jpeg'))
+    ]
+
+    return render_template("certificado.html", certificados=arquivos)
 
 @app.route("/contato")
 def contato():

@@ -47,13 +47,11 @@
     color: #fff;
 }
 
-/* Centralizar o card do WhatsApp sozinho */
 .social-card.mx-auto {
     margin: 20px auto;
     display: block;
 }
 
-/* Separador mais suave */
 hr {
     border: none;
     height: 2px;
@@ -61,7 +59,6 @@ hr {
     margin: 40px 0;
 }
 
-/* Cores personalizadas */
 .social-card.whatsapp { color: #25d366; }
 .social-card.whatsapp:hover { background: #98e2b3; }
 
