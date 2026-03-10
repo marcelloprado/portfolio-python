@@ -2,7 +2,7 @@
     margin-top: 55px;
     border-radius: 15px;
     padding: 30px;
-    background-color: #f8f9fa;
+    background-color: var(--background);
     box-shadow: 0px 5px 20px rgba(0,0,0,0.08);
 }
 .container-tecnologias h3 {
@@ -29,21 +29,15 @@
     transform: scale(1.25) translateY(-5px);
 }
 .tech-icon.git {
-    color: rgb(216, 58, 0);
+    color: var(--icon-git);
 }
 .tech-icon.bootstrap {
-    color: #563d7c;
+    color: var(--bootstrap);
 }
 
-/* .carousel-item {
+.carousel-item {
     position: relative;
-    border: 2px solid  #3b869b;
-    border-radius: 15px;
-    overflow: hidden;
-} */
- .carousel-item {
-    position: relative;
-    border: 2px solid #3b869b;
+    border: 2px solid var(--btn-back-border);
     border-radius: 15px;
     overflow: hidden;
     height: 420px;
@@ -53,15 +47,15 @@
     object-fit: cover;
 }
 
-.carousel-text-center {
+.carousel-card-center {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    background: rgba(0,0,0,0.65);
+    background: rgba(0, 0, 0, 0.65);
     backdrop-filter: blur(4px);
-    color: white;
+    color: var(--white);
     padding: 20px 30px;
     border-radius: 15px;
     max-width: 80%;
@@ -78,7 +72,7 @@
     font-size: 1rem;
 }
 .carousel-control-next-icon, .carousel-control-prev-icon {
-    border: 2px solid #282c34;
+    border: 2px solid var(--secondary-color);
     border-radius: 50%;
-    background-color: #3b869b;
+    background-color: var(--btn-back-border);
 }

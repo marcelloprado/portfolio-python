@@ -6,8 +6,8 @@
     width: 100px;
     height: 45px;
     border-radius: 30px;
-    background-color: #3b869b;
-    color: #FFF;
+    background-color: var(--btn-back-border);
+    color: var(--white);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,6 +17,6 @@
     transition: background-color 0.3s, transform 0.2s;
 }
 .btn-voltar:hover {
-  background-color: #41a0bd;
+  background-color: var(--btn-hover);
   transform: scale(1.1);
 }

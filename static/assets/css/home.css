@@ -12,7 +12,7 @@ nav ul {
     margin: 0;
     display: flex;
     justify-content: center;
-    background-color: #2e333d;
+    background-color: var(--nav-footer);
 }
 
 nav li {
@@ -22,19 +22,19 @@ nav li {
 nav a {
     display: inline-block;
     padding: 20px 30px;
-    color: rgb(97, 218, 251);
+    color: var(--primary-color);
     text-decoration: none;
     transition: background-color 0.3s;
 }
 
 nav a:hover {
-    background-color: #444;
+    background-color: var(--nav-hover);
     border-radius: 15%;
     box-shadow: 0 4px 8px rgba(97, 218, 251, 0.2);
 }
 
 img.rounded-circle {
-    border: 5px solid #e0e0e0;
+    border: 5px solid var(--border);
     max-width: 300px;
     width: 100%;
     height: auto;
@@ -42,7 +42,7 @@ img.rounded-circle {
 }
 .perfil-img {
     max-width: 300px;
-    border: 5px solid #e0e0e0;
+    border: 5px solid var(--border);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: transform 0.5s ease;
 }
@@ -51,8 +51,8 @@ img.rounded-circle {
 }
 
 .footer {
-    background-color: #282c34;
-    color: white;
+    background-color: var(--nav-footer);
+    color: var(--white);
     padding: 20px;
     text-align: center;
     margin-top: auto;

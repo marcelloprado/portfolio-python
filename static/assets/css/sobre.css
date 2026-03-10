@@ -1,11 +1,11 @@
 main {
     padding: 30px;
-    color: #282c34;
+    color: var(--secondary-color);
     display: flex;
     justify-content: center;
 }
 .section-about {
-    background-color: #3b869b;
+    background-color: var(--btn-back-border);
     padding: 22px;
     border-radius: 8px;
     margin-bottom: 20px;
