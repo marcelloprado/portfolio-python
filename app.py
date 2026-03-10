@@ -49,5 +49,5 @@ def projeto_detalhe(id):
 if __name__ == "__main__":
     app.run(debug=True)
     
-    #^ Para inicializar o ambiente virtual - venv\Scripts\activate
-#^  Arquivo principal do Flask para rodar o portfólio - python app.py
+    #^ Para inicializar o ambiente virtual - .venv\Scripts\activate
+    #^  Arquivo principal do Flask para rodar o portfólio - python app.py
