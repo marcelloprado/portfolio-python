@@ -1,19 +1,19 @@
-on: 
-  push:
-    branches:
-      - main
-name: 🚀 Deploy portfolio marcelloprado push
-jobs:
-  web-deploy:
-    name: 🎉 Deploy
-    runs-on: ubuntu-latest
-    steps:
-    - name: 🚚 Get latest code
-      uses: actions/checkout@v6
+# on: 
+#   push:
+#     branches:
+#       - main
+# name: 🚀 Deploy portfolio marcelloprado push
+# jobs:
+#   web-deploy:
+#     name: 🎉 Deploy
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: 🚚 Get latest code
+#       uses: actions/checkout@v6
     
-    - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@v4.4.0
-      with:
-        server: ${{ secrets.ftp_server }} #TODO: temos que criar a secret lá no github com o ftp do nosso servidor hostgator
-        username: ${{ secrets.ftp_username }} #TODO: temos que criar a secret lá no github
-        password: ${{ secrets.ftp_password }} #TODO: temos que criar a secret lá no github
+#     - name: 📂 Sync files
+#       uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+#       with:
+#         server: ${{ secrets.ftp_server }} #TODO: temos que criar a secret lá no github com o ftp do nosso servidor hostgator
+#         username: ${{ secrets.ftp_username }} #TODO: temos que criar a secret lá no github
+#         password: ${{ secrets.ftp_password }} #TODO: temos que criar a secret lá no github
