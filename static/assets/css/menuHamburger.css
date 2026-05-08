@@ -1,0 +1,139 @@
+/* Menu Hamburger - Estilos Responsivos */
+
+/* Botão Hamburger - Oculto por padrão (desktop) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  margin-right: 10px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: var(--primary-color);
+  margin: 5px 0;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+/* Animação do hamburger quando ativo */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(10px, 10px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Menu responsivo */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--nav-footer);
+  padding: 0;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+/* Modo tablet e mobile (até 768px) */
+@media (max-width: 767px) {
+  .hamburger {
+    display: flex;
+  }
+
+  nav ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background-color: var(--nav-footer);
+    padding: 0;
+    margin: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    z-index: 1000;
+  }
+
+  nav ul.active {
+    max-height: 500px;
+  }
+
+  nav li {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(97, 218, 251, 0.1);
+  }
+
+  nav li:last-child {
+    border-bottom: none;
+  }
+
+  nav a {
+    display: block;
+    padding: 16px 18px;
+    width: 100%;
+  }
+
+  nav a:hover {
+    background-color: var(--nav-hover);
+    border-radius: 0;
+  }
+
+  nav {
+    position: relative;
+  }
+}
+
+/* Modo mobile pequeno (até 480px) */
+@media (max-width: 480px) {
+  .hamburger {
+    padding: 8px;
+    margin-right: 5px;
+  }
+
+  .hamburger span {
+    width: 22px;
+    height: 2.5px;
+    margin: 4px 0;
+  }
+
+  nav a {
+    padding: 14px 14px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Desktop (acima de 768px) */
+@media (min-width: 769px) {
+  nav {
+    justify-content: center;
+  }
+
+  nav ul {
+    display: flex !important;
+    max-height: none !important;
+    position: static;
+  }
+
+  .hamburger {
+    display: none !important;
+  }
+}
