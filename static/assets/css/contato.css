@@ -1,63 +1,102 @@
 .contato-container {
-    max-width: 700px;
-    margin: 50px auto;
-    padding: 30px;
-    background: var(--white);
-    border: 5px solid var(--card-background);
-    border-radius: 15px;
-    box-shadow: 0 4px 5px rgba(0,0,0,0.1);
-    transition: transform 0.2s;
+  max-width: 700px;
+  margin: 50px auto;
+  padding: 30px;
+  background: var(--white);
+  border: 5px solid var(--card-background);
+  border-radius: 15px;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
 }
 
 .contato-container:hover {
-    transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 
 .redes-sociais {
-    display: flex;
-    gap: 30px;
-    justify-content: center;
-    flex-wrap: wrap;
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .social-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    padding: 20px;
-    width: 120px;
-    height: 120px;
-    background: var(--card-background);
-    border-radius: 12px;
-    font-size: 2rem;
-    text-decoration: none;
-    color: var(--card-color);
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px;
+  width: 120px;
+  height: 120px;
+  background: var(--card-background);
+  border-radius: 12px;
+  font-size: 2rem;
+  text-decoration: none;
+  color: var(--card-color);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .contato-container {
+    margin: 1.5rem 1rem;
+    padding: 1.8rem;
+  }
+
+  .social-card {
+    width: min(180px, 100%);
+    height: auto;
+    padding: 18px;
+  }
+
+  .redes-sociais {
+    gap: 1rem;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .social-card {
+    width: 100%;
+    max-width: 260px;
+  }
 }
 
 .social-card span {
-    font-size: 0.9rem;
-    font-weight: bold;
+  font-size: 0.9rem;
+  font-weight: bold;
 }
 
 .social-card:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-    color: var(--white);
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  color: var(--white);
 }
 
 .social-card.mx-auto {
-    margin: 20px auto;
-    display: block;
+  margin: 20px auto;
+  display: block;
 }
 
-.social-card.whatsapp { color: var(--color-zap); }
-.social-card.whatsapp:hover { background:var(--color-zap-hover);}
+.social-card.whatsapp {
+  color: var(--color-zap);
+}
+.social-card.whatsapp:hover {
+  background: var(--color-zap-hover);
+}
 
-.social-card.github { color: var(--card-color); }
-.social-card.github:hover { background: var(--card-color); color: var(--white); }
+.social-card.github {
+  color: var(--card-color);
+}
+.social-card.github:hover {
+  background: var(--card-color);
+  color: var(--white);
+}
 
-.social-card.vercel { color: var(--card-color); }
-.social-card.vercel:hover { background: var(--card-color); color: var(--white); }
+.social-card.vercel {
+  color: var(--card-color);
+}
+.social-card.vercel:hover {
+  background: var(--card-color);
+  color: var(--white);
+}
