@@ -51,3 +51,4 @@ if __name__ == "__main__":
     
     #^ Para inicializar o ambiente virtual - .venv\Scripts\activate
     #^  Arquivo principal do Flask para rodar o portfólio - python app.py
+    #! Aicionado na hostinger e com webHook do GitHub para atualizar o portfólio automaticamente - https://www.hostinger.com.br/tutoriais/como-usar-webhooks-github-hostinger/
