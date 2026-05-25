@@ -51,6 +51,13 @@ nav ul {
   padding: 0;
 }
 
+@media (max-width: 831px) {
+  nav li a {
+    padding: 16px 18px;
+  }
+}
+
+
 /* Modo tablet e mobile (até 768px) */
 @media (max-width: 767px) {
   .hamburger {

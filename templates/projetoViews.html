@@ -40,8 +40,8 @@
     </div>
   
     <div
-      class="projeto-video col-12 col-md-6 h-100 d-flex align-items-center justify-content-center"
-    >
+      class="projeto-video col-12 col-md-6 h-100 d-flex align-items-center justify-content-center">
+
       {% if projeto['video'] %}
       <video
         class="w-100 h-100"
@@ -55,7 +55,7 @@
           src="{{ url_for('static', filename=projeto['video']) }}"
           type="video/mp4"
         />
-        Seu navegador não suporta vídeos.
+        Navegador não suporta vídeos.
       </video>
       {% elif projeto['gif'] %}
       <img
