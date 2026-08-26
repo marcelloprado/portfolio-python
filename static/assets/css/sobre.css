@@ -1,31 +1,184 @@
-main {
-  padding: 30px;
-  color: var(--secondary-color);
-  display: flex;
-  justify-content: center;
-}
-.section-about {
-  background-color: var(--btn-back-border);
-  padding: 22px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  display: flex;
-  flex-direction: column;
-  max-width: 35rem;
-  align-items: center;
+/* ==========================================================================
+   Página /sobre — biografia, skills e linha do tempo
+   ========================================================================== */
+
+.sobre-layout {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+  text-align: left;
+  margin-bottom: 5rem;
 }
 
-@media (max-width: 768px) {
-  main {
+/* ---------- Texto ---------- */
+
+.sobre-texto {
+  padding: 2.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+}
+
+.sobre-texto p {
+  font-size: 1.02rem;
+  line-height: 1.75;
+}
+
+.sobre-texto strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.sobre-fecho {
+  margin-top: 1.75rem;
+  padding: 1.1rem 1.25rem;
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  background: rgba(97, 218, 251, 0.07);
+  color: var(--text);
+}
+
+.sobre-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 2rem;
+}
+
+/* ---------- Skills ---------- */
+
+.bloco-skills {
+  position: sticky;
+  top: calc(var(--nav-h) + 1.5rem);
+  padding: 1.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+}
+
+.skill-grupo + .skill-grupo {
+  margin-top: 1.5rem;
+}
+
+.skill-grupo h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.9rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.skill-grupo h3 i {
+  color: var(--accent);
+  font-size: 0.85rem;
+}
+
+/* ---------- Linha do tempo ---------- */
+
+.linha-tempo-secao {
+  margin-bottom: 2rem;
+}
+
+.linha-tempo {
+  position: relative;
+  list-style: none;
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 0 0 0 2rem;
+  text-align: left;
+}
+
+/* Trilho vertical que conecta os marcos. */
+.linha-tempo::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent), var(--accent-2), transparent);
+}
+
+.marco {
+  position: relative;
+  padding-bottom: 2.25rem;
+}
+
+.marco:last-child {
+  padding-bottom: 0;
+}
+
+/* Ponto sobre o trilho. */
+.marco::before {
+  content: "";
+  position: absolute;
+  left: calc(-2rem - 5px);
+  top: 0.45rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+}
+
+.marco-atual::before {
+  background: var(--accent);
+  box-shadow: 0 0 0 5px rgba(97, 218, 251, 0.18);
+}
+
+.marco-ano {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.35rem;
+}
+
+.marco-conteudo h3 {
+  font-size: 1.08rem;
+  margin-bottom: 0.35rem;
+}
+
+.marco-conteudo p {
+  font-size: 0.94rem;
+  margin: 0;
+}
+
+/* ---------- Responsivo ---------- */
+
+@media (max-width: 900px) {
+  .sobre-layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .bloco-skills {
+    position: static;
+  }
+}
+
+@media (max-width: 767px) {
+  .sobre-texto {
     padding: 1.5rem;
   }
 
-  .section-about {
-    max-width: 100%;
-    padding: 1.25rem;
+  .sobre-acoes .btn-projeto,
+  .sobre-acoes .btn-ghost {
+    flex: 1 1 100%;
   }
 
-  .section-about h2 {
-    font-size: 2rem;
+  .linha-tempo {
+    padding-left: 1.5rem;
+  }
+
+  .marco::before {
+    left: calc(-1.5rem - 5px);
   }
 }

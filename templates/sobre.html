@@ -1,29 +1,156 @@
 {% extends 'base.html' %}
 
-{% block title %}Sobre{% endblock %}
+{% block title %}Sobre — Marcello Prado Muller{% endblock %}
+{% block description %}A trajetória de Marcello Prado Muller: de consertar computadores em 1996 ao desenvolvimento web com Python, Flask e Django.{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/sobre.css') }}">
+{% endblock %}
 
 {% block content %}
-
-<section class="section-about">
-
-  <h2>Olá! Eu sou <span>Marcello Prado Muller</span></h2>
-  <p><strong>Desenvolvedor Frontend | Backend | Python | Flask • Django • SQL</strong></p>
-
+<section class="section-head" data-reveal>
+  <span class="eyebrow">Sobre mim</span>
+  <h1>Quase 30 anos <span class="text-gradient">perto da tecnologia</span></h1>
   <p>
-    Minha jornada com tecnologia começou em 1996, quando ajudava meu pai a consertar computadores e tive meus primeiros contatos com programação. Desde cedo desenvolvi curiosidade por entender como as coisas funcionam e por resolver problemas através da tecnologia.
-  </p>
-  <p>
-    Ao longo dessa trajetória, atuei em áreas como manutenção de computadores, telecomunicações e suporte em TI, além de me formar como Técnico em Manutenção e Suporte pelo Senac. Essas experiências fortaleceram minha base técnica e minha capacidade de analisar e solucionar problemas reais.
-  </p>
-  <p>
-    Nos últimos anos, direcionei minha carreira para o desenvolvimento de software. Iniciei meus estudos em Front-end, trabalhando com HTML, CSS, JavaScript, React e Git através de formações na Alura. Posteriormente aprofundei meus conhecimentos em Python com a Hashtag Treinamentos e concluí, em 05/09/2025, o programa Entra21 (Blusoft + Sesc/Senac).
-  </p>
-  <p>
-    Atualmente estou cursando Análise e Desenvolvimento de Sistemas pela Uniasselvi e desenvolvendo projetos utilizando Python, com frameworks como Flask e Django, além de trabalhar com bancos de dados SQL.
-  </p>
-  <p>
-    Busco oportunidades para atuar como Desenvolvedor Web, contribuindo com soluções bem estruturadas, código limpo e projetos que realmente gerem valor para as pessoas.
+    Desenvolvedor Web com foco em Python, Flask, Django e SQL. Curiosidade por entender
+    como as coisas funcionam é o fio que liga tudo o que já fiz.
   </p>
 </section>
 
+<div class="sobre-layout">
+  <article class="sobre-texto" data-reveal>
+    <p>
+      Minha jornada com tecnologia começou em <strong>1996</strong>, quando ajudava meu pai a
+      consertar computadores e tive meus primeiros contatos com programação. Desde cedo
+      desenvolvi curiosidade por entender como as coisas funcionam e por resolver problemas
+      através da tecnologia.
+    </p>
+    <p>
+      Ao longo dessa trajetória, atuei em áreas como manutenção de computadores,
+      telecomunicações e suporte em TI, além de me formar como <strong>Técnico em Manutenção
+      e Suporte pelo Senac</strong>. Essas experiências fortaleceram minha base técnica e minha
+      capacidade de analisar e solucionar problemas reais.
+    </p>
+    <p>
+      Nos últimos anos, direcionei minha carreira para o desenvolvimento de software. Iniciei
+      meus estudos em Front-end, trabalhando com HTML, CSS, JavaScript, React e Git através de
+      formações na Alura. Posteriormente aprofundei meus conhecimentos em Python com a Hashtag
+      Treinamentos e concluí, em <strong>05/09/2025</strong>, o programa Entra21
+      (Blusoft + Sesc/Senac).
+    </p>
+    <p>
+      Atualmente estou cursando <strong>Análise e Desenvolvimento de Sistemas pela Uniasselvi</strong>
+      e desenvolvendo projetos utilizando Python, com frameworks como Flask e Django, além de
+      trabalhar com bancos de dados SQL.
+    </p>
+    <p class="sobre-fecho">
+      Busco oportunidades para atuar como Desenvolvedor Web, contribuindo com soluções bem
+      estruturadas, código limpo e projetos que realmente gerem valor para as pessoas.
+    </p>
+
+    <div class="sobre-acoes">
+      <a href="{{ url_for('projetos') }}" class="btn-projeto">
+        Ver meus projetos <i class="fas fa-arrow-right"></i>
+      </a>
+      <a href="{{ url_for('contato') }}" class="btn-ghost">
+        <i class="fas fa-paper-plane"></i> Falar comigo
+      </a>
+    </div>
+  </article>
+
+  <aside class="sobre-lateral">
+    <div class="bloco-skills" data-reveal>
+      <h2 class="bloco-titulo">Onde eu atuo</h2>
+
+      <div class="skill-grupo">
+        <h3><i class="fas fa-server"></i> Back-end</h3>
+        <ul class="skill-lista">
+          <li class="tech-chip">Python</li>
+          <li class="tech-chip">Flask</li>
+          <li class="tech-chip">Django</li>
+          <li class="tech-chip">SQL</li>
+        </ul>
+      </div>
+
+      <div class="skill-grupo">
+        <h3><i class="fas fa-code"></i> Front-end</h3>
+        <ul class="skill-lista">
+          <li class="tech-chip">HTML</li>
+          <li class="tech-chip">CSS</li>
+          <li class="tech-chip">JavaScript</li>
+          <li class="tech-chip">React</li>
+          <li class="tech-chip">TypeScript</li>
+          <li class="tech-chip">Bootstrap</li>
+        </ul>
+      </div>
+
+      <div class="skill-grupo">
+        <h3><i class="fas fa-toolbox"></i> Ferramentas</h3>
+        <ul class="skill-lista">
+          <li class="tech-chip">Git</li>
+          <li class="tech-chip">GitHub</li>
+          <li class="tech-chip">Node.js</li>
+          <li class="tech-chip">n8n</li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<section class="linha-tempo-secao">
+  <div class="section-head" data-reveal>
+    <span class="eyebrow">Trajetória</span>
+    <h2>A linha do tempo</h2>
+  </div>
+
+  <ol class="linha-tempo">
+    <li class="marco" data-reveal>
+      <span class="marco-ano">1996</span>
+      <div class="marco-conteudo">
+        <h3>Os primeiros computadores</h3>
+        <p>Ajudando meu pai a consertar máquinas e tendo os primeiros contatos com programação.</p>
+      </div>
+    </li>
+
+    <li class="marco" data-reveal>
+      <span class="marco-ano">Base técnica</span>
+      <div class="marco-conteudo">
+        <h3>Técnico em Manutenção e Suporte — Senac</h3>
+        <p>Anos atuando com manutenção de computadores, telecomunicações e suporte em TI.</p>
+      </div>
+    </li>
+
+    <li class="marco" data-reveal>
+      <span class="marco-ano">Front-end</span>
+      <div class="marco-conteudo">
+        <h3>Formações na Alura</h3>
+        <p>HTML, CSS, JavaScript, React, TypeScript e Git — a virada para o desenvolvimento.</p>
+      </div>
+    </li>
+
+    <li class="marco" data-reveal>
+      <span class="marco-ano">Python</span>
+      <div class="marco-conteudo">
+        <h3>Hashtag Treinamentos</h3>
+        <p>Aprofundamento em Python, com Flask e Django, além de lógica e algoritmos.</p>
+      </div>
+    </li>
+
+    <li class="marco" data-reveal>
+      <span class="marco-ano">2025</span>
+      <div class="marco-conteudo">
+        <h3>Entra21 — Blusoft + Sesc/Senac</h3>
+        <p>Programa de formação em Python Back-end concluído em 05/09/2025.</p>
+      </div>
+    </li>
+
+    <li class="marco marco-atual" data-reveal>
+      <span class="marco-ano">Hoje</span>
+      <div class="marco-conteudo">
+        <h3>Análise e Desenvolvimento de Sistemas — Uniasselvi</h3>
+        <p>Cursando ADS e construindo projetos com Python, Flask, Django e SQL.</p>
+      </div>
+    </li>
+  </ol>
+</section>
 {% endblock %}

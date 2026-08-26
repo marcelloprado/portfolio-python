@@ -1,46 +1,131 @@
 {% extends 'base.html' %}
 
+{% block title %}Marcello Prado Muller — Desenvolvedor Python{% endblock %}
+{% block description %}Desenvolvedor Web com foco em Python, Flask, Django e SQL. Conheça meus projetos, minha trajetória e entre em contato.{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/home.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/projeto.css') }}">
+{% endblock %}
+
 {% block content %}
-<div class="row align-items-center">
+<section class="hero">
+  <div class="hero-texto" data-reveal>
+    <span class="hero-status">
+      <span class="ponto-vivo"></span> Disponível para novas oportunidades
+    </span>
 
-    <div class="texto-esquerda col-md-7 text-center text-md-start">
-        <h1 class="nome-completo">
-            Olá, eu sou o <span class="text-primary">Marcello Prado Muller</span>
-        </h1>
-        <p class="lead">Estudante de Programação</p>
+    <h1 class="hero-titulo">
+      Olá, eu sou o<br>
+      <span class="text-gradient">Marcello Prado Muller</span>
+    </h1>
 
-        <p>Bem-vindo ao meu portfólio! Aqui você vai encontrar alguns dos meus projetos, desenvolvidos com dedicação, foco em boas práticas e uso de tecnologias modernas.</p>
-        <p class="fst-italic mt-5">✨Transformando ideias em soluções digitais de verdade.</p>
+    <p class="hero-cargo">
+      Desenvolvedor Web <span class="separador">·</span> Python <span class="separador">·</span> Flask <span class="separador">·</span> Django <span class="separador">·</span> SQL
+    </p>
+
+    <p class="hero-bio">
+      Transformo ideias em soluções digitais de verdade. Comecei consertando computadores
+      com meu pai em 1996 e hoje construo aplicações web do banco de dados à interface,
+      com foco em código limpo e problemas reais.
+    </p>
+
+    <div class="hero-acoes">
+      <a href="{{ url_for('projetos') }}" class="btn-projeto">
+        Ver projetos <i class="fas fa-arrow-right"></i>
+      </a>
+      <a href="{{ url_for('contato') }}" class="btn-ghost">
+        <i class="fas fa-paper-plane"></i> Entrar em contato
+      </a>
     </div>
+  </div>
 
-    <div class="col-md-5 text-center mt-4 mt-md-0">
-        <img src="{{ url_for('static', filename='assets/imagens/perfil/minha-foto.png') }}"
-            alt="Foto de Marcello"
-            class="img-fluid rounded-circle perfil-img">
+  <div class="hero-foto" data-reveal style="transition-delay: 120ms">
+    <div class="foto-anel">
+      <img src="{{ url_for('static', filename='assets/imagens/perfil/minha-foto.png') }}"
+           alt="Foto de Marcello Prado Muller"
+           class="perfil-img"
+           width="320" height="320">
     </div>
+  </div>
+</section>
 
-    <div class="icones my-4 text-center">
-        <h3 class="mb-3">Tecnologias usadas nesse projeto</h3>
-        <div class="d-flex flex-wrap justify-content-center gap-4">
-            <div class="tech-icon" data-bs-toggle="tooltip" title="Python">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" width="55" alt="Python" />
-            </div>
-            <div class="tech-icon" data-bs-toggle="tooltip" title="Flask">
-                <i class="devicon-flask-original colored fa-3x"></i>
-            </div>
-            <div class="tech-icon" data-bs-toggle="tooltip" title="HTML5">
-                <i class="devicon-html5-plain-wordmark fa-3x colored"></i>
-            </div>
-            <div class="tech-icon" data-bs-toggle="tooltip" title="CSS3">
-                <i class="devicon-css3-plain-wordmark fa-3x colored"></i>
-            </div>
-            <div class="tech-icon bootstrap" data-bs-toggle="tooltip" title="Bootstrap">
-                <i class="devicon-bootstrap-plain-wordmark fa-3x colored"></i>
-            </div>
-            <div class="tech-icon" data-bs-toggle="tooltip" title="Json">
-                <i class="devicon-json-plain colored fa-3x"></i>
-            </div>
-        </div>
+<section class="estatisticas" data-reveal>
+  <div class="estatistica">
+    <strong>{{ total_projetos }}</strong>
+    <span>Projetos publicados</span>
+  </div>
+  <div class="estatistica">
+    <strong>{{ total_certificados }}</strong>
+    <span>Certificados concluídos</span>
+  </div>
+  <div class="estatistica">
+    <strong>ADS</strong>
+    <span>Cursando na Uniasselvi</span>
+  </div>
+  <div class="estatistica">
+    <strong>Entra21</strong>
+    <span>Formado em 2025</span>
+  </div>
+</section>
+
+<section class="destaques">
+  <div class="section-head" data-reveal>
+    <span class="eyebrow">Selecionados</span>
+    <h2>Projetos em destaque</h2>
+    <p>Os trabalhos que melhor representam o que eu sei fazer hoje.</p>
+  </div>
+
+  <div class="projetos-grid">
+    {% for projeto in destaques %}
+      {% set atraso = loop.index0 * 80 %}
+      {% include 'partials/_projeto_card.html' with context %}
+    {% endfor %}
+  </div>
+
+  <div class="destaques-rodape" data-reveal>
+    <a href="{{ url_for('projetos') }}" class="btn-ghost">
+      Ver todos os projetos <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
+</section>
+
+<section class="container-tecnologias" data-reveal>
+  <div class="section-head" style="margin-bottom: 2rem">
+    <span class="eyebrow">Bastidores</span>
+    <h2>Tecnologias usadas neste portfólio</h2>
+    <p>Este site é uma aplicação Flask servindo templates Jinja, com os projetos vindos de um JSON.</p>
+  </div>
+
+  <div class="tech-grid">
+    <div class="tech-icon" data-bs-toggle="tooltip" title="Python">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/icons/python/python-original.svg" alt="Python" loading="lazy">
     </div>
-</div>
+    <div class="tech-icon" data-bs-toggle="tooltip" title="Flask">
+      <i class="devicon-flask-original colored"></i>
+    </div>
+    <div class="tech-icon" data-bs-toggle="tooltip" title="HTML5">
+      <i class="devicon-html5-plain colored"></i>
+    </div>
+    <div class="tech-icon" data-bs-toggle="tooltip" title="CSS3">
+      <i class="devicon-css3-plain colored"></i>
+    </div>
+    <div class="tech-icon" data-bs-toggle="tooltip" title="JavaScript">
+      <i class="devicon-javascript-plain colored"></i>
+    </div>
+    <div class="tech-icon bootstrap" data-bs-toggle="tooltip" title="Bootstrap">
+      <i class="devicon-bootstrap-plain"></i>
+    </div>
+    <div class="tech-icon" data-bs-toggle="tooltip" title="JSON">
+      <i class="devicon-json-plain colored"></i>
+    </div>
+    <div class="tech-icon git" data-bs-toggle="tooltip" title="Git">
+      <i class="devicon-git-plain"></i>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='assets/js/projetos.js') }}"></script>
 {% endblock %}

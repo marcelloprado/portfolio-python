@@ -1,0 +1,71 @@
+{# Cartão de projeto. Usado na galeria (/projetos) e nos destaques da home.
+   Espera: projeto (dict) e, opcionalmente, atraso (ms para escalonar a animação). #}
+<article class="projeto-card"
+         data-tecnologias="{{ projeto.get('tecnologias', []) | join('|') }}"
+         data-reveal
+         style="transition-delay: {{ atraso | default(0) }}ms">
+
+  <div class="projeto-thumb">
+    {% if projeto.get('capa') %}
+    <img src="{{ url_for('static', filename=projeto['capa']) }}"
+         alt="Capa do projeto {{ projeto['titulo'] }}"
+         class="thumb-capa"
+         loading="lazy"
+         decoding="async">
+    {% else %}
+    <div class="thumb-vazia"><i class="fas fa-image"></i></div>
+    {% endif %}
+
+    {% if projeto.get('gif') %}
+    <img data-gif="{{ url_for('static', filename=projeto['gif']) }}"
+         alt=""
+         class="thumb-gif"
+         aria-hidden="true">
+    {% endif %}
+
+    {% if projeto.get('destaque') %}
+    <span class="badge-destaque"><i class="fas fa-star"></i> Destaque</span>
+    {% endif %}
+
+    <span class="projeto-tipo">{{ projeto.get('tipo', 'Projeto') }}</span>
+  </div>
+
+  <div class="projeto-body">
+    <div class="projeto-meta">{{ projeto.get('ano', '') }}</div>
+
+    <h3 class="projeto-titulo">
+      <a href="{{ url_for('projeto_detalhe', id=projeto['id']) }}" class="cover-link">
+        {{ projeto['titulo'] }}
+      </a>
+    </h3>
+
+    <p class="projeto-texto">{{ projeto['texto'] }}</p>
+
+    <ul class="projeto-tags">
+      {% for tecnologia in projeto.get('tecnologias', [])[:4] %}
+      <li class="tech-chip">{{ tecnologia }}</li>
+      {% endfor %}
+    </ul>
+
+    <div class="projeto-acoes">
+      <span class="projeto-ver">Ver detalhes <i class="fas fa-arrow-right"></i></span>
+
+      <div class="projeto-externos">
+        {% if projeto.get('link') and projeto['link'] != '#' %}
+        <a href="{{ projeto['link'] }}" target="_blank" rel="noopener noreferrer"
+           class="icone-externo" aria-label="Abrir {{ projeto['titulo'] }} ao vivo"
+           data-bs-toggle="tooltip" title="Ver ao vivo">
+          <i class="fas fa-arrow-up-right-from-square"></i>
+        </a>
+        {% endif %}
+        {% if projeto.get('link-repositorio') and projeto['link-repositorio'] != '#' %}
+        <a href="{{ projeto['link-repositorio'] }}" target="_blank" rel="noopener noreferrer"
+           class="icone-externo" aria-label="Repositório de {{ projeto['titulo'] }}"
+           data-bs-toggle="tooltip" title="Ver código">
+          <i class="fab fa-github"></i>
+        </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</article>

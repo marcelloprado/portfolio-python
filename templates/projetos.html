@@ -1,140 +1,93 @@
-{% extends "base.html" %} 
-{% block content %}
-<div class="container">
-  <div class="row align-items-start">
+{% extends "base.html" %}
 
-    <div class="container-carousel">
-      <h1 class="text-center mb-5">Projetos</h1>
-      <h3>Clique em um projeto para ver mais detalhes</h3>
-      <div
-        id="carrosselProjetos"
-        class="carousel slide"
-        data-bs-ride="carousel"
-      >
-     
-        <div class="carousel-indicators">
-          {% for projeto in projetos %}
-          <button
-            type="button"
-            data-bs-target="#carrosselProjetos"
-            data-bs-slide-to="{{ loop.index0 }}"
-            {%
-            if
-            loop.first
-            %}class="active"
-            aria-current="true"
-            {%
-            endif
-            %}
-            aria-label="Slide {{ loop.index }}"
-          ></button>
-          {% endfor %}
-        </div>
-        
-        <div class="carousel-inner rounded-4">
-          {% for projeto in projetos %}
-          <div
-            class="carousel-item {% if loop.first %}active{% endif %}"
-            style="position: relative"
-          >
-            <a href="{{ url_for('projeto_detalhe', id=projeto['id']) }}">
-              {% if projeto['capa'] %}
-                <img
-                src="{{ url_for('static', filename=projeto['capa']) }}"
-                class="opacity-75 d-block w-100 object-fit-cover"
-                alt="{{ projeto['titulo'] }}"
-                
-                />
-              <div class="carousel-card-center">
-                <h5>{{ projeto['titulo'] }}</h5>
-                <p>{{ projeto['texto'] }}</p>
-              </div>
-              {% else %}
-               <p class="text-danger">Imagem de capa indisponível</p>
-               {% endif %}
-            </a>
-          </div>
-          {% endfor %}
-        </div>
-        
-        <button
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#carrosselProjetos"
-          data-bs-slide="prev"
-        >
-          <span
-            id="carousel-control"
-            class="carousel-control-prev-icon"
-            aria-hidden="true"
-          ></span>
-        </button>
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#carrosselProjetos"
-          data-bs-slide="next"
-        >
-          <span
-            id="carousel-control"
-            class="carousel-control-next-icon"
-            aria-hidden="true"
-          ></span>
-        </button>
-      </div>
-    </div>
-    
-    <div class="container-tecnologias">
-      <h3 class="mb-3 text-center">Tecnologias que trabalho</h3>
-      <div class="d-flex flex-wrap justify-content-center gap-4">
-        
-        <div class="tech-icon" data-bs-toggle="tooltip" title="Python">
-          <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"
-            width="55"
-            alt="Python"
-          />
-        </div>
-        <div class="tech-icon" data-bs-toggle="tooltip" title="Flask">
-          <i class="devicon-flask-original colored fa-3x"></i>
-        </div>
-        <div class="tech-icon" data-bs-toggle="tooltip" title="Django">
-          <i class="devicon-django-plain colored fa-3x"></i>
-        </div>
-        <div class="tech-icon" data-bs-toggle="tooltip" title="JavaScript">
-          <i class="devicon-javascript-plain fa-3x colored"></i>
-        </div>
-        <div class="tech-icon" data-bs-toggle="tooltip" title="HTML5">
-          <i class="devicon-html5-plain-wordmark fa-3x colored"></i>
-        </div>
-        <div class="tech-icon" data-bs-toggle="tooltip" title="CSS3">
-          <i class="devicon-css3-plain-wordmark fa-3x colored"></i>
-        </div>
-        <div class="tech-icon" data-bs-toggle="tooltip" title="React">
-          <i class="devicon-react-plain-wordmark fa-3x colored"></i>
-        </div>
-        <div
-          class="tech-icon bootstrap"
-          data-bs-toggle="tooltip"
-          title="Bootstrap"
-        >
-          <i class="devicon-bootstrap-plain-wordmark fa-3x colored"></i>
-        </div>
-        <div class="tech-icon" data-bs-toggle="tooltip" title="GitHub">
-          <i class="devicon-github-original fa-3x colored"></i>
-        </div>
-        <div class="tech-icon git" data-bs-toggle="tooltip" title="Git">
-          <i class="devicon-git-plain colored fa-3x"></i>
-        </div>
-        <div class="tech-icon sql" data-bs-toggle="tooltip" title="SQL">
-          <i class="devicon-azuresqldatabase-plain colored fa-3x"></i>
-        </div>
-        <div class="tech-icon" data-bs-toggle="tooltip" title="Json">
-          <i class="devicon-json-plain colored fa-3x"></i>
-        </div>
-      </div>
-    </div>
+{% block title %}Projetos — Marcello Prado Muller{% endblock %}
+{% block description %}Galeria de projetos desenvolvidos por Marcello Prado Muller em Python, Flask, Django, React e JavaScript.{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/projeto.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="section-head" data-reveal>
+  <span class="eyebrow">Portfólio</span>
+  <h1>Projetos que <span class="text-gradient">construí</span></h1>
+  <p>
+    Cada projeto abaixo nasceu de um problema real ou de um conceito que eu queria dominar.
+    Passe o mouse para ver em movimento e clique para conhecer os detalhes.
+  </p>
+</section>
+
+<div class="filtros" data-reveal>
+  <div class="filtros-lista" role="group" aria-label="Filtrar projetos por tecnologia">
+    <button type="button" class="filtro-btn is-active" data-filtro="todos">
+      Todos <span class="filtro-contagem">{{ projetos|length }}</span>
+    </button>
+    {% for tecnologia in tecnologias %}
+    <button type="button" class="filtro-btn" data-filtro="{{ tecnologia['nome'] }}">
+      {{ tecnologia['nome'] }} <span class="filtro-contagem">{{ tecnologia['contagem'] }}</span>
+    </button>
+    {% endfor %}
   </div>
 </div>
-<script src="{{ url_for('static', filename='assets/js/voltarCarousel.js') }}"></script>
+
+<div class="projetos-grid" id="projetos-grid">
+  {% for projeto in projetos %}
+    {% set atraso = loop.index0 * 60 %}
+    {% include 'partials/_projeto_card.html' with context %}
+  {% endfor %}
+</div>
+
+<p class="sem-resultado" id="sem-resultado" hidden>
+  Nenhum projeto usa essa tecnologia ainda.
+</p>
+
+<section class="container-tecnologias" data-reveal>
+  <div class="section-head" style="margin-bottom: 2rem">
+    <span class="eyebrow">Stack</span>
+    <h2>Tecnologias que trabalho</h2>
+  </div>
+
+  <div class="tech-grid">
+    <div class="tech-icon" data-bs-toggle="tooltip" title="Python">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/icons/python/python-original.svg" alt="Python" loading="lazy">
+    </div>
+    <div class="tech-icon" data-bs-toggle="tooltip" title="Flask">
+      <i class="devicon-flask-original colored"></i>
+    </div>
+    <div class="tech-icon" data-bs-toggle="tooltip" title="Django">
+      <i class="devicon-django-plain colored"></i>
+    </div>
+    <div class="tech-icon" data-bs-toggle="tooltip" title="JavaScript">
+      <i class="devicon-javascript-plain colored"></i>
+    </div>
+    <div class="tech-icon" data-bs-toggle="tooltip" title="React">
+      <i class="devicon-react-original colored"></i>
+    </div>
+    <div class="tech-icon" data-bs-toggle="tooltip" title="HTML5">
+      <i class="devicon-html5-plain colored"></i>
+    </div>
+    <div class="tech-icon" data-bs-toggle="tooltip" title="CSS3">
+      <i class="devicon-css3-plain colored"></i>
+    </div>
+    <div class="tech-icon bootstrap" data-bs-toggle="tooltip" title="Bootstrap">
+      <i class="devicon-bootstrap-plain"></i>
+    </div>
+    <div class="tech-icon sql" data-bs-toggle="tooltip" title="SQL">
+      <i class="devicon-azuresqldatabase-plain colored"></i>
+    </div>
+    <div class="tech-icon git" data-bs-toggle="tooltip" title="Git">
+      <i class="devicon-git-plain"></i>
+    </div>
+    <div class="tech-icon" data-bs-toggle="tooltip" title="GitHub">
+      <i class="devicon-github-original"></i>
+    </div>
+    <div class="tech-icon" data-bs-toggle="tooltip" title="JSON">
+      <i class="devicon-json-plain colored"></i>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='assets/js/projetos.js') }}"></script>
 {% endblock %}

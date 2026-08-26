@@ -1,104 +1,232 @@
-span {
-  font-weight: bold;
-}
-.nome-completo {
-  font-size: 2.5rem;
+/* ==========================================================================
+   Página inicial — hero, estatísticas e destaques
+   ========================================================================== */
+
+/* ---------- Hero ---------- */
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: 3.5rem;
+  padding: 2rem 0 4rem;
+  text-align: left;
 }
 
-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.hero-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.4rem 0.9rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  border-radius: var(--radius-pill);
+  background: rgba(52, 211, 153, 0.08);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--success);
+}
+
+.ponto-vivo {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--success);
+}
+
+.ponto-vivo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--success);
+  animation: pulsar 2s var(--ease) infinite;
+}
+
+@keyframes pulsar {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+.hero-titulo {
+  font-size: clamp(2.3rem, 5.5vw, 3.8rem);
+  margin-bottom: 1rem;
+}
+
+.hero-cargo {
+  font-family: var(--font-mono);
+  font-size: clamp(0.85rem, 1.8vw, 1rem);
+  color: var(--accent);
+  margin-bottom: 1.25rem;
+}
+
+.separador {
+  color: var(--text-dim);
+  margin: 0 0.15rem;
+}
+
+.hero-bio {
+  font-size: 1.05rem;
+  max-width: 34rem;
+  margin-bottom: 2rem;
+}
+
+.hero-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+/* ---------- Foto ---------- */
+
+.hero-foto {
+  display: grid;
+  place-items: center;
+}
+
+/* Anel de gradiente ao redor da foto. */
+.foto-anel {
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: 5px;
+  border-radius: 50%;
+  background: conic-gradient(from 180deg, var(--accent), var(--accent-2), var(--accent));
+  box-shadow: 0 20px 60px rgba(97, 218, 251, 0.18);
+}
+
+.foto-anel::before {
+  content: "";
+  position: absolute;
+  inset: -28px;
+  border-radius: 50%;
+  border: 1px dashed rgba(97, 218, 251, 0.25);
+  animation: girar 26s linear infinite;
+}
+
+@keyframes girar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.perfil-img {
+  width: min(320px, 62vw);
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid var(--bg);
+  background: var(--surface);
+  transition: transform var(--t);
+}
+
+.perfil-img:hover {
+  transform: scale(1.04);
+}
+
+/* ---------- Estatísticas ---------- */
+
+.estatisticas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 5rem;
+}
+
+.estatistica {
+  padding: 1.4rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  text-align: center;
+  transition:
+    transform var(--t),
+    border-color var(--t-fast);
+}
+
+.estatistica:hover {
+  transform: translateY(-4px);
+  border-color: rgba(97, 218, 251, 0.35);
+}
+
+.estatistica strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  line-height: 1.1;
+  color: var(--accent);
+}
+
+.estatistica span {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ---------- Destaques ---------- */
+
+.destaques {
+  margin-bottom: 1rem;
+}
+
+.destaques-rodape {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  background-color: var(--nav-footer);
+  margin-top: 2.5rem;
 }
 
-nav li {
-  margin: 0;
-  padding: 20px 30px;
-  color: var(--primary-color);
-  text-decoration: none;
-  transition: background-color 0.3s;
-}
+/* ---------- Responsivo ---------- */
 
-nav a:hover {
-  background-color: var(--nav-hover);
-  border-radius: 15%;
-  box-shadow: 0 4px 8px rgba(97, 218, 251, 0.2);
-}
-
-img.rounded-circle {
-  border: 5px solid var(--border);
-  max-width: 300px;
-  width: 100%;
-  height: auto;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-.perfil-img {
-  max-width: 300px;
-  border: 5px solid var(--border);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.5s ease;
-}
-.perfil-img:hover {
-  transform: scale(1.03);
-}
-
-.footer {
-  background-color: var(--nav-footer);
-  color: var(--white);
-  padding: 20px;
-  text-align: center;
-  margin-top: auto;
-}
-
-@media (max-width: 768px) {
-  .texto-esquerda {
-    padding: 0 1rem;
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding: 1rem 0 3rem;
+    text-align: center;
   }
 
-  .nome-completo {
-    font-size: 2rem;
-    white-space: normal;
+  .hero-texto {
+    order: 2;
   }
 
-  nav ul {
-    flex-direction: column;
-    align-items: center;
+  .hero-foto {
+    order: 1;
   }
 
-  nav li {
-    margin: 0.2rem 0;
+  .hero-bio {
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  nav a {
-    width: 100%;
-    max-width: 360px;
-    border-radius: 10px;
-  }
-
-  .icones {
+  .hero-acoes {
     justify-content: center;
-    gap: 18px;
   }
 
-  .carousel-item {
-    height: auto;
-    min-height: 260px;
+  .estatisticas {
+    margin-bottom: 3.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .foto-anel::before {
+    inset: -16px;
   }
 
-  .carousel-item img {
-    height: auto;
+  .estatistica strong {
+    font-size: 1.55rem;
   }
 
-  .carousel-card-center {
-    position: static;
-    transform: none;
-    background: rgba(0, 0, 0, 0.7);
-    margin: 1rem auto 0;
-    max-width: 90%;
+  .hero-acoes .btn-projeto,
+  .hero-acoes .btn-ghost {
+    flex: 1 1 100%;
   }
 }

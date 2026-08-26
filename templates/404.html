@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}Página não encontrada — Marcello Prado Muller{% endblock %}
+{% block description %}A página que você procurou não existe neste portfólio.{% endblock %}
+
+{% block content %}
+<section class="erro-404">
+  <span class="erro-codigo text-gradient">404</span>
+  <h1>Essa página não existe</h1>
+  <p>
+    O endereço que você acessou não corresponde a nenhuma página do portfólio.
+    Talvez o link esteja desatualizado.
+  </p>
+
+  <div class="erro-acoes">
+    <a href="{{ url_for('home') }}" class="btn-projeto">
+      <i class="fas fa-house"></i> Voltar ao início
+    </a>
+    <a href="{{ url_for('projetos') }}" class="btn-ghost">
+      Ver projetos <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
+</section>
+
+<style>
+  .erro-404 {
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 4rem 1rem 6rem;
+  }
+
+  .erro-codigo {
+    font-family: var(--font-display);
+    font-size: clamp(5rem, 18vw, 10rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+
+  .erro-404 p {
+    max-width: 32rem;
+    margin-bottom: 2rem;
+  }
+
+  .erro-acoes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.85rem;
+  }
+</style>
+{% endblock %}

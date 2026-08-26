@@ -1,24 +1,66 @@
 {% extends 'base.html' %}
 
-{% block title %}Certificados{% endblock %}
+{% block title %}Certificados — Marcello Prado Muller{% endblock %}
+{% block description %}Certificados de formação de Marcello Prado Muller: Alura, Hashtag Treinamentos, Entra21, Senac e outros.{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/certificado.css') }}">
+{% endblock %}
 
 {% block content %}
-
-<section class="certificados-section">
-
-  <h1 class="titulo-principal">Meus Certificados</h1>
-
-  <div class="certificados-grid">
-
-    {% for certificado in certificados %}
-      <div class="certificado-item">
-        <img
-          src="{{ url_for('static', filename='assets/imagens/certificados/' ~ certificado) }}"
-          alt="Certificado"
-        />
-      </div>
-    {% endfor %}
-  </div>
+<section class="section-head" data-reveal>
+  <span class="eyebrow">Formação</span>
+  <h1>Meus <span class="text-gradient">certificados</span></h1>
+  <p>
+    {{ certificados | length }} certificados de cursos e programas concluídos ao longo da
+    minha formação. Clique em qualquer um para ampliar.
+  </p>
 </section>
 
+<div class="busca-wrap" data-reveal>
+  <div class="campo-busca">
+    <i class="fas fa-magnifying-glass"></i>
+    <input type="search" id="busca-certificado" placeholder="Buscar por curso ou tecnologia…"
+           aria-label="Buscar certificado">
+  </div>
+</div>
+
+<div class="certificados-grid" id="certificados-grid">
+  {% for certificado in certificados %}
+  <button type="button"
+          class="certificado-item"
+          data-titulo="{{ certificado['titulo'] }}"
+          data-imagem="{{ url_for('static', filename='assets/imagens/certificados/' ~ certificado['arquivo']) }}"
+          data-reveal
+          style="transition-delay: {{ (loop.index0 % 12) * 40 }}ms">
+    <img src="{{ url_for('static', filename='assets/imagens/certificados/' ~ certificado['arquivo']) }}"
+         alt="Certificado: {{ certificado['titulo'] }}"
+         loading="lazy"
+         decoding="async">
+    <span class="certificado-legenda">
+      <span class="certificado-titulo">{{ certificado['titulo'] }}</span>
+      <span class="certificado-lupa"><i class="fas fa-expand"></i></span>
+    </span>
+  </button>
+  {% endfor %}
+</div>
+
+<p class="sem-resultado" id="sem-certificado" hidden>
+  Nenhum certificado encontrado para essa busca.
+</p>
+
+<!-- Visualizador em tela cheia -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Certificado ampliado" hidden>
+  <button type="button" class="lightbox-fechar" aria-label="Fechar">
+    <i class="fas fa-xmark"></i>
+  </button>
+  <figure class="lightbox-conteudo">
+    <img id="lightbox-img" src="" alt="">
+    <figcaption id="lightbox-legenda"></figcaption>
+  </figure>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='assets/js/certificados.js') }}"></script>
 {% endblock %}

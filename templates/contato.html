@@ -1,32 +1,63 @@
 {% extends 'base.html' %}
 
-{% block title %} Contatos {% endblock %}
+{% block title %}Contato — Marcello Prado Muller{% endblock %}
+{% block description %}Fale com Marcello Prado Muller pelo WhatsApp ou acompanhe seu trabalho no GitHub e na Vercel.{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/contato.css') }}">
+{% endblock %}
 
 {% block content %}
-<div class="contato-container text-center mt-5 shadow-lg">
-    
-    <h2 class="mb-3">Entre em Contato</h2>
-    <p class="text-muted">Clique no ícone abaixo para falar comigo no WhatsApp:</p>
-    
-    <a href="https://wa.me/5547999281500" target="_blank" class="social-card whatsapp mx-auto">
-        <i class="fab fa-whatsapp"></i>
-        <span>WhatsApp</span>
+<section class="section-head" data-reveal>
+  <span class="eyebrow">Contato</span>
+  <h1>Vamos <span class="text-gradient">conversar</span></h1>
+  <p>
+    Estou aberto a oportunidades como Desenvolvedor Web, freelas e trocas de ideia sobre
+    projetos. Escolha o canal que preferir — respondo rápido.
+  </p>
+</section>
+
+<div class="contato-principal" data-reveal>
+  <div class="contato-destaque">
+    <span class="contato-icone whatsapp"><i class="fab fa-whatsapp"></i></span>
+    <div class="contato-info">
+      <h2>WhatsApp</h2>
+      <p>O jeito mais rápido de falar comigo. Mensagem direta, sem formulário.</p>
+    </div>
+    <a href="https://wa.me/5547999281500" target="_blank" rel="noopener noreferrer" class="btn-projeto">
+      Chamar no WhatsApp <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
+</div>
+
+<section class="contato-canais">
+  <div class="section-head" data-reveal style="margin-bottom: 2rem">
+    <h2>Onde encontrar meu trabalho</h2>
+  </div>
+
+  <div class="redes-sociais">
+    <a href="https://github.com/marcelloprado" target="_blank" rel="noopener noreferrer"
+       class="social-card github" data-reveal>
+      <span class="social-icone"><i class="fab fa-github"></i></span>
+      <strong>GitHub</strong>
+      <span class="social-desc">Todo o código dos meus projetos</span>
+      <span class="social-seta"><i class="fas fa-arrow-up-right-from-square"></i></span>
     </a>
 
-    <h3 class="mb-3">Meus Projetos</h3>
-    <p class="text-muted">Confira meus repositórios e portfólio:</p>
+    <a href="https://vercel.com/marcello-prados-projects" target="_blank" rel="noopener noreferrer"
+       class="social-card vercel" data-reveal style="transition-delay: 80ms">
+      <span class="social-icone"><i class="fas fa-globe"></i></span>
+      <strong>Vercel</strong>
+      <span class="social-desc">Meus projetos front-end publicados</span>
+      <span class="social-seta"><i class="fas fa-arrow-up-right-from-square"></i></span>
+    </a>
 
-    <div class="redes-sociais d-flex justify-content-center gap-4 mt-4">
-        
-        <a href="https://github.com/marcelloprado" target="_blank" class="social-card github mx-auto">
-            <i class="fab fa-github"></i>
-            <span>GitHub</span>
-        </a>
-
-        <a href="https://vercel.com/marcello-prados-projects" target="_blank" class="social-card vercel mx-auto">
-            <i class="fas fa-globe"></i>
-            <span>Vercel</span>
-        </a>
-    </div>
-</div>
+    <a href="{{ url_for('projetos') }}" class="social-card portfolio" data-reveal style="transition-delay: 160ms">
+      <span class="social-icone"><i class="fas fa-folder-open"></i></span>
+      <strong>Portfólio</strong>
+      <span class="social-desc">A galeria completa aqui no site</span>
+      <span class="social-seta"><i class="fas fa-arrow-right"></i></span>
+    </a>
+  </div>
+</section>
 {% endblock %}

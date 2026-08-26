@@ -1,102 +1,164 @@
-.contato-container {
-  max-width: 700px;
-  margin: 50px auto;
-  padding: 30px;
-  background: var(--white);
-  border: 5px solid var(--card-background);
-  border-radius: 15px;
-  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
+/* ==========================================================================
+   Página /contato
+   ========================================================================== */
+
+.contato-principal {
+  margin-bottom: 4.5rem;
 }
 
-.contato-container:hover {
-  transform: translateY(-5px);
+.contato-destaque {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1.75rem;
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 2rem;
+  border: 1px solid rgba(37, 211, 102, 0.28);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(30rem 12rem at 0% 0%, rgba(37, 211, 102, 0.12), transparent 70%),
+    linear-gradient(160deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  text-align: left;
+  transition:
+    transform var(--t),
+    border-color var(--t-fast);
 }
+
+.contato-destaque:hover {
+  transform: translateY(-4px);
+  border-color: rgba(37, 211, 102, 0.5);
+}
+
+.contato-icone {
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  border-radius: var(--radius);
+  font-size: 1.9rem;
+}
+
+.contato-icone.whatsapp {
+  color: var(--color-zap);
+  background: rgba(37, 211, 102, 0.12);
+  border: 1px solid rgba(37, 211, 102, 0.3);
+}
+
+.contato-info h2 {
+  font-size: 1.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.contato-info p {
+  margin: 0;
+  font-size: 0.94rem;
+}
+
+/* ---------- Canais ---------- */
 
 .redes-sociais {
-  display: flex;
-  gap: 30px;
-  justify-content: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap: 1.25rem;
 }
 
 .social-card {
+  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  padding: 20px;
-  width: 120px;
-  height: 120px;
-  background: var(--card-background);
-  border-radius: 12px;
-  font-size: 2rem;
-  text-decoration: none;
-  color: var(--card-color);
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-@media (max-width: 768px) {
-  .contato-container {
-    margin: 1.5rem 1rem;
-    padding: 1.8rem;
-  }
-
-  .social-card {
-    width: min(180px, 100%);
-    height: auto;
-    padding: 18px;
-  }
-
-  .redes-sociais {
-    gap: 1rem;
-    justify-content: center;
-  }
-}
-
-@media (max-width: 576px) {
-  .social-card {
-    width: 100%;
-    max-width: 260px;
-  }
-}
-
-.social-card span {
-  font-size: 0.9rem;
-  font-weight: bold;
+  align-items: flex-start;
+  gap: 0.4rem;
+  padding: 1.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  text-align: left;
+  color: var(--text);
+  transition:
+    transform var(--t),
+    border-color var(--t-fast),
+    box-shadow var(--t);
 }
 
 .social-card:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-  color: var(--white);
+  color: var(--text);
+  transform: translateY(-6px);
+  border-color: rgba(97, 218, 251, 0.4);
+  box-shadow: var(--shadow-lg);
 }
 
-.social-card.mx-auto {
-  margin: 20px auto;
-  display: block;
+.social-icone {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 1.35rem;
+  color: var(--text-muted);
+  transition:
+    color var(--t-fast),
+    border-color var(--t-fast);
 }
 
-.social-card.whatsapp {
-  color: var(--color-zap);
-}
-.social-card.whatsapp:hover {
-  background: var(--color-zap-hover);
+.social-card:hover .social-icone {
+  color: var(--accent);
+  border-color: var(--accent);
 }
 
-.social-card.github {
-  color: var(--card-color);
-}
-.social-card.github:hover {
-  background: var(--card-color);
-  color: var(--white);
+.social-card strong {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
 }
 
-.social-card.vercel {
-  color: var(--card-color);
+.social-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.5;
 }
-.social-card.vercel:hover {
-  background: var(--card-color);
-  color: var(--white);
+
+.social-seta {
+  position: absolute;
+  top: 1.6rem;
+  right: 1.6rem;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  transition:
+    color var(--t-fast),
+    transform var(--t-fast);
+}
+
+.social-card:hover .social-seta {
+  color: var(--accent);
+  transform: translate(3px, -3px);
+}
+
+.social-card.portfolio:hover .social-seta {
+  transform: translateX(4px);
+}
+
+/* ---------- Responsivo ---------- */
+
+@media (max-width: 767px) {
+  .contato-principal {
+    margin-bottom: 3rem;
+  }
+
+  .contato-destaque {
+    grid-template-columns: auto 1fr;
+    gap: 1.15rem;
+    padding: 1.5rem;
+  }
+
+  .contato-destaque .btn-projeto {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  .social-card {
+    padding: 1.4rem;
+  }
 }

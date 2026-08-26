@@ -1,210 +1,563 @@
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  background: linear-gradient(to right, #c7e0f8, #cdd1f1);
-  color: var(--secondary-color);
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  box-sizing: border-box;
+/* ==========================================================================
+   Design System — Portfólio Marcello Prado Muller
+   Tokens, reset, tipografia, navegação, rodapé e componentes compartilhados.
+   ========================================================================== */
+
+:root {
+  /* Superfícies */
+  --bg: #0b0f17;
+  --bg-soft: #0f141d;
+  --surface: #141b26;
+  --surface-2: #1a2331;
+  --surface-3: #212c3d;
+
+  /* Texto */
+  --text: #e7edf5;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+
+  /* Acentos */
+  --accent: #61dafb;
+  --accent-strong: #38bdf8;
+  --accent-2: #818cf8;
+  --accent-glow: rgba(97, 218, 251, 0.28);
+
+  /* Traços */
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+
+  /* Estados */
+  --success: #34d399;
+  --danger: #f87171;
+  --color-zap: #25d366;
+
+  /* Elevação */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.5);
+
+  /* Forma */
+  --radius-sm: 10px;
+  --radius: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  /* Ritmo */
+  --nav-h: 68px;
+  --wrap: 1180px;
+
+  /* Movimento */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --t-fast: 0.18s var(--ease);
+  --t: 0.32s var(--ease);
+
+  /* Tipografia */
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Sora", "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Consolas, monospace;
 }
+
+/* ---------- Reset ---------- */
 
 *,
 *::before,
 *::after {
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
-main.container {
-  width: min(100%, 1200px);
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* Brilho ambiente de fundo, fixo atrás de todo o conteúdo. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(60rem 40rem at 12% -8%, rgba(97, 218, 251, 0.13), transparent 60%),
+    radial-gradient(50rem 36rem at 92% 4%, rgba(129, 140, 248, 0.12), transparent 62%),
+    radial-gradient(46rem 46rem at 50% 120%, rgba(56, 189, 248, 0.08), transparent 60%);
+}
+
+img,
+video {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color var(--t-fast);
+}
+
+a:hover {
+  color: var(--accent-strong);
+}
+
+/* ---------- Tipografia ---------- */
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.6em;
+  color: var(--text);
+}
+
+h1 {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+}
+h2 {
+  font-size: clamp(1.7rem, 3.6vw, 2.4rem);
+}
+h3 {
+  font-size: clamp(1.25rem, 2.4vw, 1.55rem);
+}
+
+p {
+  margin: 0 0 1rem;
+  color: var(--text-muted);
+}
+
+::selection {
+  background: var(--accent);
+  color: #06121a;
+}
+
+/* Texto com gradiente — usado nos títulos de destaque. */
+.text-gradient {
+  background: linear-gradient(120deg, var(--accent) 10%, var(--accent-2) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Rótulo pequeno acima dos títulos de seção. */
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.section-head {
+  text-align: center;
+  max-width: 42rem;
+  margin: 0 auto 3rem;
+}
+
+.section-head p {
+  font-size: 1.05rem;
+}
+
+/* ---------- Layout ---------- */
+
+.page-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main.container,
+main {
+  width: min(100%, var(--wrap));
   margin: 0 auto;
-  padding: 1rem;
+  padding: 3.5rem 1.25rem 5rem;
+  flex: 1;
+}
+
+/* ---------- Navegação ---------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 900;
+  background: rgba(11, 15, 23, 0.72);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border-bottom: 1px solid var(--border);
+}
+
+nav.nav-wrap {
+  width: min(100%, var(--wrap));
+  margin: 0 auto;
+  min-height: var(--nav-h);
+  padding: 0 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  flex-shrink: 0;
+}
+
+.brand:hover {
+  color: var(--text);
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 11px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #06121a;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  box-shadow: 0 4px 14px var(--accent-glow);
+}
+
+.brand-name {
+  font-size: 0.98rem;
 }
 
 nav ul {
   list-style: none;
-  padding: 0;
-  margin: 0;
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  background-color: var(--nav-footer);
-}
-
-nav li {
+  align-items: center;
+  gap: 0.25rem;
   margin: 0;
+  padding: 0;
 }
 
-nav a {
-  display: inline-block;
-  padding: 14px 18px;
-  color: var(--primary-color);
-  text-decoration: none;
-  transition: background-color 0.3s;
+nav ul li a {
+  position: relative;
+  display: block;
+  padding: 0.55rem 0.95rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.94rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition:
+    color var(--t-fast),
+    background-color var(--t-fast);
 }
 
-nav a:hover {
-  background-color: var(--nav-hover);
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(97, 218, 251, 0.2);
+nav ul li a:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.06);
 }
 
-.container-carousel {
-  width: 100%;
-  margin: 0 auto 2rem;
+nav ul li a.is-active {
+  color: var(--accent);
+  background: rgba(97, 218, 251, 0.1);
 }
 
-.projeto-container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
-}
+/* ---------- Botões ---------- */
 
-.projeto-video video,
-.projeto-video img {
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  object-fit: cover;
-  border-radius: 12px;
-}
-
-.btn-projeto {
+.btn-projeto,
+.btn-ghost {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 18px;
-  border-radius: 10px;
-  background-color: var(--btn-back-border);
-  color: var(--white);
-  text-decoration: none;
+  gap: 0.55rem;
+  padding: 0.8rem 1.4rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
   transition:
-    background-color 0.3s,
-    transform 0.2s;
+    transform var(--t-fast),
+    box-shadow var(--t),
+    background-color var(--t-fast),
+    border-color var(--t-fast),
+    color var(--t-fast);
+}
+
+.btn-projeto {
+  color: #06121a;
+  background: linear-gradient(120deg, var(--accent), var(--accent-strong));
+  box-shadow: 0 6px 20px var(--accent-glow);
 }
 
 .btn-projeto:hover {
-  background-color: var(--btn-hover);
+  color: #06121a;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px var(--accent-glow);
+}
+
+.btn-ghost {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--border-strong);
+}
+
+.btn-ghost:hover {
+  color: var(--text);
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--accent);
+}
+
+/* ---------- Cartão base ---------- */
+
+.card-glass {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+}
+
+/* ---------- Chips de tecnologia ---------- */
+
+.tech-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.28rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.04);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* Mensagem exibida quando um filtro ou busca não retorna nada. */
+.sem-resultado {
+  text-align: center;
+  padding: 3.5rem 1rem;
+  color: var(--text-dim);
+  font-size: 1.05rem;
+}
+
+/* Título de bloco dentro de painéis e colunas de conteúdo. */
+.bloco-titulo {
+  font-size: 1.1rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Lista horizontal de chips (tecnologias, skills). */
+.skill-lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ---------- Grade de ícones de tecnologia ---------- */
+
+.container-tecnologias {
+  margin-top: 5rem;
+  padding: 2.5rem 1.5rem;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.tech-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.9rem;
+}
+
+.tech-icon {
+  display: grid;
+  place-items: center;
+  width: 78px;
+  height: 78px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.03);
+  cursor: pointer;
+  transition:
+    transform var(--t),
+    border-color var(--t-fast),
+    background-color var(--t-fast);
+}
+
+.tech-icon:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  background: rgba(97, 218, 251, 0.08);
+}
+
+.tech-icon i {
+  font-size: 2.1rem;
+}
+
+.tech-icon img {
+  width: 40px;
+  height: 40px;
+}
+
+.tech-icon.git i {
+  color: #f05033;
+}
+
+.tech-icon.bootstrap i {
+  color: #7952b3;
+}
+
+/* ---------- Rodapé ---------- */
+
+.site-footer {
+  margin-top: auto;
+  border-top: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.28);
+}
+
+.footer-wrap {
+  width: min(100%, var(--wrap));
+  margin: 0 auto;
+  padding: 2.25rem 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.footer-wrap p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--text-dim);
+}
+
+.footer-links {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.footer-links a {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: var(--text-muted);
+  transition:
+    color var(--t-fast),
+    border-color var(--t-fast),
+    transform var(--t-fast);
+}
+
+.footer-links a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
   transform: translateY(-2px);
 }
 
-:root {
-  --primary-color: #61dafb;
-  --secondary-color: #282c34;
-  --white: #fff;
-  --card-background: #ccc;
-  --background: #f8f9fa;
-  --card-color: #333;
-  --color-zap: #25d366;
-  --color-zap-hover: #98e2b3;
-  --nav-footer: #2e333d;
-  --nav-hover: #444;
-  --border: #e0e0e0;
-  --icon-git: #d83a00;
-  --bootstrap: #264de4;
-  --btn-back-border: #3b869b;
-  --btn-hover: #41a0bd;
+/* ---------- Revelação ao rolar ---------- */
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.6s var(--ease),
+    transform 0.6s var(--ease);
 }
 
-@media (max-width: 992px) {
-  .carousel-card-center {
-    padding: 16px;
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Foco visível ---------- */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* ---------- Preferência por menos movimento ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 
-  .carousel-text-center h5 {
-    font-size: 1.3rem;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 
-  .carousel-text-center p {
-    font-size: 0.95rem;
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
   }
 }
 
-@media (max-width: 768px) {
-  nav ul {
-    flex-direction: column;
-    align-items: center;
-  }
+/* ---------- Responsivo ---------- */
 
-  nav a {
-    width: 100%;
-    max-width: 360px;
-    border-radius: 0;
-  }
-
-  .btn-voltar {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: auto;
-    margin: 0 0 1.5rem;
-  }
-
-  .row {
-    gap: 1.5rem;
-  }
-
-  .projeto-info,
-  .projeto-video {
-    width: 100%;
-  }
-
-  .projeto-info {
-    order: 2;
-  }
-
-  .projeto-video {
-    order: 1;
+@media (max-width: 767px) {
+  main.container,
+  main {
+    padding: 2.5rem 1.15rem 3.5rem;
   }
 
   .container-tecnologias {
-    padding: 1.5rem;
+    margin-top: 3rem;
+    padding: 1.75rem 1rem;
   }
 
   .tech-icon {
-    flex: 0 1 40%;
+    width: 66px;
+    height: 66px;
   }
 
-  .contato-container {
-    margin: 1.5rem auto;
-    padding: 1.8rem;
+  .tech-icon i {
+    font-size: 1.8rem;
   }
 
-  .redes-sociais {
-    gap: 1rem;
-  }
-
-  .certificados-section {
-    padding: 2rem 1rem;
-  }
-
-  .titulo-principal {
-    font-size: 2rem;
+  .footer-wrap {
+    flex-direction: column;
+    text-align: center;
   }
 }
 
-@media (max-width: 576px) {
-  .nome-completo {
-    font-size: 2rem;
-    white-space: normal;
-  }
-
-  .btn-voltar {
-    width: 100%;
-    text-align: center;
-  }
-
-  .social-card {
-    width: 100%;
-    max-width: 240px;
-  }
-
-  .carousel-control-prev,
-  .carousel-control-next {
+@media (max-width: 480px) {
+  .brand-name {
     display: none;
   }
 }

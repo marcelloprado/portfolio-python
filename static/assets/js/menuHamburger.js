@@ -1,33 +1,44 @@
 // Menu Hamburger - Funcionalidade responsiva
-document.addEventListener('DOMContentLoaded', function() {
-  const hamburger = document.querySelector('.hamburger');
-  const navMenu = document.querySelector('nav ul');
-  const navLinks = document.querySelectorAll('nav ul li a');
 
-  // Toggle do menu ao clicar no hamburger
-  if (hamburger) {
-    hamburger.addEventListener('click', () =>{
-      hamburger.classList.toggle('active');
-      navMenu.classList.toggle('active');
-    });
+document.addEventListener("DOMContentLoaded", function () {
+  const hamburger = document.querySelector(".hamburger");
+  const navMenu = document.querySelector("nav ul");
+
+  if (!hamburger || !navMenu) return;
+
+  function fechar() {
+    hamburger.classList.remove("active");
+    navMenu.classList.remove("active");
+    hamburger.setAttribute("aria-expanded", "false");
+    hamburger.setAttribute("aria-label", "Abrir menu");
   }
 
-  // Fechar menu ao clicar em um link
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger.classList.remove('active');
-      navMenu.classList.remove('active');
-    });
+  function alternar() {
+    const aberto = hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active", aberto);
+    hamburger.setAttribute("aria-expanded", String(aberto));
+    hamburger.setAttribute("aria-label", aberto ? "Fechar menu" : "Abrir menu");
+  }
+
+  hamburger.addEventListener("click", alternar);
+
+  // Fechar ao clicar em um link do menu
+  navMenu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", fechar);
   });
 
-  // Fechar menu ao clicar fora dele
-  document.addEventListener('click', function(event) {
-    const isClickInsideNav = navMenu.contains(event.target);
-    const isClickOnHamburger = hamburger.contains(event.target);
+  // Fechar ao clicar fora do menu
+  document.addEventListener("click", function (evento) {
+    const dentroDoMenu = navMenu.contains(evento.target);
+    const noHamburger = hamburger.contains(evento.target);
 
-    if (!isClickInsideNav && !isClickOnHamburger && hamburger.classList.contains('active')) {
-      hamburger.classList.remove('active');
-      navMenu.classList.remove('active');
+    if (!dentroDoMenu && !noHamburger && hamburger.classList.contains("active")) {
+      fechar();
     }
+  });
+
+  // Fechar com a tecla Esc
+  document.addEventListener("keydown", function (evento) {
+    if (evento.key === "Escape") fechar();
   });
 });
