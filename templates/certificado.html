@@ -31,8 +31,7 @@
           class="certificado-item"
           data-titulo="{{ certificado['titulo'] }}"
           data-imagem="{{ url_for('static', filename='assets/imagens/certificados/' ~ certificado['arquivo']) }}"
-          data-reveal
-          style="transition-delay: {{ (loop.index0 % 12) * 40 }}ms">
+          data-reveal>
     <img src="{{ url_for('static', filename='assets/imagens/certificados/' ~ certificado['arquivo']) }}"
          alt="Certificado: {{ certificado['titulo'] }}"
          loading="lazy"
