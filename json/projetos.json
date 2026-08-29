@@ -1,14 +1,14 @@
 [
   {
-    "id": 1,
+    "id": "previsao-tempo",
     "titulo": "Previsão do Tempo",
     "texto": "Consulta do clima em tempo real com a API OpenWeatherMap",
     "tipo": "Front-end",
     "ano": "2024",
     "destaque": true,
     "tecnologias": ["JavaScript", "HTML", "CSS", "API REST"],
-    "gif": "assets/imagens/projetos/1/Previsao-tempo.gif",
-    "video": "assets/imagens/projetos/1/previsao-tempo.mp4",
+    "gif": "assets/imagens/projetos/previsao-tempo/Previsao-tempo.gif",
+    "video": "assets/imagens/projetos/previsao-tempo/previsao-tempo.mp4",
     "capa": "assets/imagens/carrousel/capa-tempo.png",
     "descricao": "Aplicação web simples e intuitiva para consultar as condições climáticas de qualquer cidade do mundo em tempo real, consumindo a API OpenWeatherMap.",
     "destaques": [
@@ -20,15 +20,15 @@
     "link-repositorio": "https://github.com/marcelloprado/previsao-tempo"
   },
   {
-    "id": 2,
+    "id": "caldinhos-com-amor",
     "titulo": "Caldinhos com Amor",
     "texto": "Site institucional para um negócio local de caldos artesanais",
     "tipo": "Front-end",
     "ano": "2024",
     "destaque": true,
     "tecnologias": ["HTML", "CSS", "JavaScript"],
-    "gif": "assets/imagens/projetos/2/caldinhos.gif",
-    "video": "assets/imagens/projetos/2/caldinhos.mp4",
+    "gif": "assets/imagens/projetos/caldinhos-com-amor/caldinhos.gif",
+    "video": "assets/imagens/projetos/caldinhos-com-amor/caldinhos.mp4",
     "capa": "assets/imagens/carrousel/capa-caldinhos.png",
     "descricao": "Site criado para divulgar e vender os caldos congelados que minha esposa produzia na época. Um projeto real, com cliente real, feito para resolver uma necessidade concreta de divulgação do negócio.",
     "destaques": [
@@ -40,15 +40,15 @@
     "link-repositorio": "https://github.com/marcelloprado/caldinhoscomamor"
   },
   {
-    "id": 3,
+    "id": "calculadora-imc",
     "titulo": "Calculadora de IMC",
     "texto": "Cálculo de índice de massa corporal com feedback visual",
     "tipo": "Front-end",
     "ano": "2024",
     "destaque": false,
     "tecnologias": ["React", "JavaScript", "CSS"],
-    "gif": "assets/imagens/projetos/3/Calc-imc.gif",
-    "video": "assets/imagens/projetos/3/Calc-imc.mp4",
+    "gif": "assets/imagens/projetos/calculadora-imc/Calc-imc.gif",
+    "video": "assets/imagens/projetos/calculadora-imc/Calc-imc.mp4",
     "capa": "assets/imagens/carrousel/capa-imc.png",
     "descricao": "Calculadora de Índice de Massa Corporal construída em React. O usuário informa peso e altura e recebe na hora o resultado junto com a faixa de classificação correspondente.",
     "destaques": [
@@ -60,15 +60,15 @@
     "link-repositorio": "https://github.com/marcelloprado/calc-imc-react"
   },
   {
-    "id": 4,
+    "id": "quiz-programacao",
     "titulo": "Quiz de Programação",
     "texto": "Questionário interativo com pontuação e resultado final",
     "tipo": "Front-end",
     "ano": "2024",
     "destaque": false,
     "tecnologias": ["React", "JavaScript", "CSS"],
-    "gif": "assets/imagens/projetos/4/Projeto-Quiz.gif",
-    "video": "assets/imagens/projetos/4/Projeto-Quiz.mp4",
+    "gif": "assets/imagens/projetos/quiz-programacao/Projeto-Quiz.gif",
+    "video": "assets/imagens/projetos/quiz-programacao/Projeto-Quiz.mp4",
     "capa": "assets/imagens/carrousel/capa-quiz.png",
     "descricao": "Quiz interativo sobre programação que apresenta as perguntas em sequência, acompanha os acertos do usuário e exibe o desempenho ao final da rodada.",
     "destaques": [
@@ -80,15 +80,15 @@
     "link-repositorio": "https://github.com/marcelloprado/quiz-com-react"
   },
   {
-    "id": 5,
+    "id": "urna-eletronica",
     "titulo": "Urna Eletrônica",
     "texto": "Simulação da urna eletrônica brasileira",
     "tipo": "Front-end",
     "ano": "2024",
     "destaque": false,
     "tecnologias": ["JavaScript", "HTML", "CSS"],
-    "gif": "assets/imagens/projetos/5/urna-eletronica.gif",
-    "video": "assets/imagens/projetos/5/urna-eletronica.mp4",
+    "gif": "assets/imagens/projetos/urna-eletronica/urna-eletronica.gif",
+    "video": "assets/imagens/projetos/urna-eletronica/urna-eletronica.mp4",
     "capa": "assets/imagens/carrousel/capa-urna.png",
     "descricao": "Simulação do funcionamento da urna eletrônica brasileira, reproduzindo o fluxo de votação por cargo, a confirmação do voto e a apuração final dos resultados.",
     "destaques": [
@@ -100,15 +100,15 @@
     "link-repositorio": "https://github.com/marcelloprado/urna-eletronica"
   },
   {
-    "id": 6,
+    "id": "comunidade-python",
     "titulo": "Comunidade Python",
     "texto": "Rede social completa com autenticação e banco de dados",
     "tipo": "Full-stack",
     "ano": "2025",
     "destaque": true,
     "tecnologias": ["Python", "Flask", "SQL", "HTML", "CSS"],
-    "gif": "assets/imagens/projetos/6/comunidade.gif",
-    "video": "assets/imagens/projetos/6/comunidade.mp4",
+    "gif": "assets/imagens/projetos/comunidade-python/comunidade.gif",
+    "video": "assets/imagens/projetos/comunidade-python/comunidade.mp4",
     "capa": "assets/imagens/carrousel/capa-comunidade.png",
     "descricao": "Meu primeiro projeto full-stack em Python: uma aplicação de comunidade onde os usuários criam conta, fazem login e publicam conteúdo. Foi aqui que juntei pela primeira vez back-end, banco de dados e interface em um sistema só.",
     "destaques": [
@@ -121,15 +121,15 @@
     "link-repositorio": "https://github.com/marcelloprado/Projetopythoncomunidade"
   },
   {
-    "id": 7,
+    "id": "painel-admin-django",
     "titulo": "Painel Administrativo Django",
     "texto": "Back-office do e-commerce Reserva",
     "tipo": "Back-end",
     "ano": "2025",
     "destaque": false,
     "tecnologias": ["Python", "Django", "SQL"],
-    "gif": "assets/imagens/projetos/7/admin-Django.gif",
-    "video": "assets/imagens/projetos/7/admin-Django.mp4",
+    "gif": "assets/imagens/projetos/painel-admin-django/admin-Django.gif",
+    "video": "assets/imagens/projetos/painel-admin-django/admin-Django.mp4",
     "capa": "assets/imagens/carrousel/capa-django.png",
     "descricao": "Área administrativa do e-commerce construído em Django, usada para gerenciar o catálogo da loja. É por aqui que produtos, categorias e pedidos são cadastrados e mantidos.",
     "destaques": [
@@ -141,14 +141,14 @@
     "link-repositorio": "https://github.com/marcelloprado/ecommerce-python"
   },
   {
-    "id": 8,
+    "id": "ecommerce-reserva",
     "titulo": "E-commerce Reserva",
     "texto": "Réplica funcional da loja Reserva em Django",
     "tipo": "Full-stack",
     "ano": "2025",
     "destaque": true,
     "tecnologias": ["Python", "Django", "SQL", "HTML", "CSS", "JavaScript"],
-    "video": "assets/imagens/projetos/8/reserva-ecommerce.mp4",
+    "video": "assets/imagens/projetos/ecommerce-reserva/reserva-ecommerce.mp4",
     "capa": "assets/imagens/carrousel/capa-reserva.png",
     "descricao": "Réplica funcional do e-commerce da loja Reserva, desenvolvida em Django. O projeto cobre a jornada de compra do começo ao fim: navegação pelo catálogo, página de produto e carrinho.",
     "destaques": [

@@ -121,7 +121,7 @@ def contato():
     return render_template("contato.html")
 
 
-@app.route("/projeto/<int:id>")
+@app.route("/projeto/<id>")
 def projeto_detalhe(id):
     lista_projetos = carregar_projetos()
     projeto = next((p for p in lista_projetos if p["id"] == id), None)
