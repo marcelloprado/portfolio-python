@@ -76,6 +76,61 @@
   background: #000;
 }
 
+/* ---------- Galeria de mídias ---------- */
+
+.galeria-thumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-top: 1px solid var(--border);
+  background: var(--surface-2);
+}
+
+.galeria-thumb {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  width: 140px;
+  padding: 0.4rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md, 10px);
+  background: rgba(255, 255, 255, 0.03);
+  cursor: pointer;
+  transition:
+    border-color var(--t-fast),
+    background-color var(--t-fast);
+}
+
+.galeria-thumb img {
+  width: 100%;
+  max-height: none;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 6px;
+  background: #000;
+}
+
+.galeria-thumb span {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.galeria-thumb:hover {
+  border-color: var(--border-strong);
+}
+
+.galeria-thumb.is-ativo {
+  border-color: var(--accent);
+  background: rgba(97, 218, 251, 0.1);
+}
+
+.galeria-thumb.is-ativo span {
+  color: var(--text);
+}
+
 /* ---------- Conteúdo ---------- */
 
 .projeto-detalhe {

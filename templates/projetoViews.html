@@ -27,7 +27,20 @@
 </header>
 
 <figure class="projeto-media" data-reveal>
-  {% if projeto.get('video') %}
+  {% if projeto.get('midias') and projeto['midias'] | length > 1 %}
+  <img class="galeria-principal" src="{{ url_for('static', filename=projeto['midias'][0]['gif']) }}"
+       alt="{{ projeto['midias'][0].get('legenda', 'Demonstração do projeto ' ~ projeto['titulo']) }}" loading="lazy">
+  <div class="galeria-thumbs">
+    {% for midia in projeto['midias'] %}
+    <button type="button" class="galeria-thumb{% if loop.first %} is-ativo{% endif %}"
+            data-gif="{{ url_for('static', filename=midia['gif']) }}"
+            data-legenda="{{ midia.get('legenda', '') }}">
+      <img src="{{ url_for('static', filename=midia['gif']) }}" alt="{{ midia.get('legenda', '') }}" loading="lazy">
+      {% if midia.get('legenda') %}<span>{{ midia['legenda'] }}</span>{% endif %}
+    </button>
+    {% endfor %}
+  </div>
+  {% elif projeto.get('video') %}
   <video controls autoplay muted loop playsinline preload="metadata"
          {% if projeto.get('capa') %}poster="{{ url_for('static', filename=projeto['capa']) }}"{% endif %}>
     <source src="{{ url_for('static', filename=projeto['video']) }}" type="video/mp4">

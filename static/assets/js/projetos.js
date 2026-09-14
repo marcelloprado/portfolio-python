@@ -3,6 +3,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   ativarFiltros();
   ativarPreviewAnimado();
+  ativarGaleriaMidias();
 });
 
 /**
@@ -79,5 +80,25 @@ function ativarPreviewAnimado() {
 
     cartao.addEventListener("mouseenter", carregar, { once: true });
     cartao.addEventListener("focusin", carregar, { once: true });
+  });
+}
+
+/**
+ * Galeria de mídias na página de detalhe: clicar numa miniatura troca
+ * a imagem principal, para projetos com mais de um gif de demonstração.
+ */
+function ativarGaleriaMidias() {
+  const principal = document.querySelector(".galeria-principal");
+  const miniaturas = document.querySelectorAll(".galeria-thumb");
+
+  if (!principal || !miniaturas.length) return;
+
+  miniaturas.forEach((miniatura) => {
+    miniatura.addEventListener("click", () => {
+      principal.src = miniatura.dataset.gif;
+      principal.alt = miniatura.dataset.legenda || principal.alt;
+
+      miniaturas.forEach((item) => item.classList.toggle("is-ativo", item === miniatura));
+    });
   });
 }
