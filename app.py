@@ -2,6 +2,7 @@ import json
 import os
 import re
 import smtplib
+import urllib.request
 from collections import Counter
 from datetime import datetime
 from email.message import EmailMessage
@@ -153,6 +154,38 @@ def validar_contato(dados):
 
 
 def enviar_email_contato(dados):
+    """Envia a mensagem do formulário: pelo Resend se houver RESEND_API_KEY, senão por SMTP."""
+    if os.environ.get("RESEND_API_KEY"):
+        enviar_email_resend(dados)
+    else:
+        enviar_email_smtp(dados)
+
+
+def enviar_email_resend(dados):
+    """Envia pela API HTTPS do Resend (o Render gratuito bloqueia as portas SMTP)."""
+    corpo = {
+        "from": os.environ.get("EMAIL_REMETENTE", "Portfólio <onboarding@resend.dev>"),
+        "to": [os.environ["EMAIL_DESTINO"]],
+        "reply_to": dados["email"],
+        "subject": f"[Portfólio] Mensagem de {dados['nome']}",
+        "text": f"Nome: {dados['nome']}\nE-mail: {dados['email']}\n\n{dados['mensagem']}",
+    }
+    requisicao = urllib.request.Request(
+        "https://api.resend.com/emails",
+        data=json.dumps(corpo).encode("utf-8"),
+        headers={
+            "Authorization": f"Bearer {os.environ['RESEND_API_KEY']}",
+            "Content-Type": "application/json",
+            "User-Agent": "portfolio-python",
+        },
+        method="POST",
+    )
+    # Erros HTTP (chave inválida, remetente não verificado...) viram OSError via HTTPError.
+    with urllib.request.urlopen(requisicao, timeout=15):
+        pass
+
+
+def enviar_email_smtp(dados):
     """Envia a mensagem do formulário por SMTP usando as variáveis de ambiente."""
     usuario = os.environ["SMTP_USUARIO"]
     senha = os.environ["SMTP_SENHA"]
