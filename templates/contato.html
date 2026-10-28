@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}Contato — Marcello Prado Muller{% endblock %}
-{% block description %}Fale com Marcello Prado Muller pelo WhatsApp ou acompanhe seu trabalho no GitHub e na Vercel.{% endblock %}
+{% block description %}Fale com Marcello Prado Muller pelo formulário, pelo WhatsApp ou acompanhe seu trabalho no GitHub e na Vercel.{% endblock %}
 
 {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/contato.css') }}">
@@ -22,13 +22,63 @@
     <span class="contato-icone whatsapp"><i class="fab fa-whatsapp"></i></span>
     <div class="contato-info">
       <h2>WhatsApp</h2>
-      <p>O jeito mais rápido de falar comigo. Mensagem direta, sem formulário.</p>
+      <p>O jeito mais rápido de falar comigo. Mensagem direta, sem espera.</p>
     </div>
     <a href="https://wa.me/5547999281500" target="_blank" rel="noopener noreferrer" class="btn-projeto">
       Chamar no WhatsApp <i class="fas fa-arrow-right"></i>
     </a>
   </div>
 </div>
+
+<section class="contato-formulario" id="formulario" data-reveal>
+  <div class="section-head" style="margin-bottom: 2rem">
+    <h2>Ou mande uma mensagem</h2>
+    <p>Preencha os campos abaixo e eu respondo no seu e-mail.</p>
+  </div>
+
+  {% if status == "enviado" %}
+  <div class="form-alerta sucesso" role="status">
+    <i class="fas fa-circle-check"></i> Mensagem enviada! Obrigado pelo contato, respondo em breve.
+  </div>
+  {% elif status == "falha" %}
+  <div class="form-alerta erro" role="alert">
+    <i class="fas fa-triangle-exclamation"></i> Não consegui enviar agora. Tente de novo ou me chame no WhatsApp.
+  </div>
+  {% endif %}
+
+  <form class="form-contato" method="post" action="{{ url_for('contato') }}#formulario" novalidate>
+    <div class="form-linha">
+      <div class="form-campo{% if erros.nome %} invalido{% endif %}">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome" value="{{ dados.nome }}" maxlength="100"
+               autocomplete="name" required>
+        {% if erros.nome %}<span class="form-erro">{{ erros.nome }}</span>{% endif %}
+      </div>
+
+      <div class="form-campo{% if erros.email %} invalido{% endif %}">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" value="{{ dados.email }}" maxlength="150"
+               autocomplete="email" required>
+        {% if erros.email %}<span class="form-erro">{{ erros.email }}</span>{% endif %}
+      </div>
+    </div>
+
+    <div class="form-campo{% if erros.mensagem %} invalido{% endif %}">
+      <label for="mensagem">Mensagem</label>
+      <textarea id="mensagem" name="mensagem" rows="6" maxlength="3000" required>{{ dados.mensagem }}</textarea>
+      {% if erros.mensagem %}<span class="form-erro">{{ erros.mensagem }}</span>{% endif %}
+    </div>
+
+    <div class="form-armadilha" aria-hidden="true">
+      <label for="site">Site</label>
+      <input type="text" id="site" name="site" tabindex="-1" autocomplete="off">
+    </div>
+
+    <button type="submit" class="btn-projeto">
+      Enviar mensagem <i class="fas fa-paper-plane"></i>
+    </button>
+  </form>
+</section>
 
 <section class="contato-canais">
   <div class="section-head" data-reveal style="margin-bottom: 2rem">

@@ -55,6 +55,115 @@
   font-size: 0.94rem;
 }
 
+/* ---------- Formulário ---------- */
+
+.contato-formulario {
+  max-width: 46rem;
+  margin: 0 auto 4.5rem;
+}
+
+.form-contato {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 2rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  text-align: left;
+}
+
+.form-linha {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.form-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.form-campo label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.form-campo input,
+.form-campo textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.03);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text);
+  transition:
+    border-color var(--t-fast),
+    box-shadow var(--t-fast);
+}
+
+.form-campo textarea {
+  resize: vertical;
+  min-height: 9rem;
+}
+
+.form-campo input:focus,
+.form-campo textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.form-campo.invalido input,
+.form-campo.invalido textarea {
+  border-color: var(--danger);
+}
+
+.form-erro {
+  font-size: 0.82rem;
+  color: var(--danger);
+}
+
+.form-contato .btn-projeto {
+  align-self: flex-start;
+}
+
+/* Campo isca para robôs de spam: fora da tela, invisível para pessoas. */
+.form-armadilha {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.form-alerta {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius);
+  font-size: 0.94rem;
+  text-align: left;
+}
+
+.form-alerta.sucesso {
+  color: var(--success);
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  background: rgba(52, 211, 153, 0.08);
+}
+
+.form-alerta.erro {
+  color: var(--danger);
+  border: 1px solid rgba(248, 113, 113, 0.35);
+  background: rgba(248, 113, 113, 0.08);
+}
+
 /* ---------- Canais ---------- */
 
 .redes-sociais {
@@ -160,5 +269,21 @@
 
   .social-card {
     padding: 1.4rem;
+  }
+
+  .contato-formulario {
+    margin-bottom: 3rem;
+  }
+
+  .form-contato {
+    padding: 1.5rem;
+  }
+
+  .form-linha {
+    grid-template-columns: 1fr;
+  }
+
+  .form-contato .btn-projeto {
+    width: 100%;
   }
 }

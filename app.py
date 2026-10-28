@@ -1,12 +1,31 @@
 import json
 import os
 import re
+import smtplib
 from collections import Counter
 from datetime import datetime
+from email.message import EmailMessage
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
+
+
+def carregar_env():
+    """Carrega variáveis do arquivo .env (se existir) sem sobrescrever as do sistema."""
+    caminho = os.path.join(app.root_path, ".env")
+    if not os.path.exists(caminho):
+        return
+    with open(caminho, "r", encoding="utf-8") as f:
+        for linha in f:
+            linha = linha.strip()
+            if not linha or linha.startswith("#") or "=" not in linha:
+                continue
+            chave, valor = linha.split("=", 1)
+            os.environ.setdefault(chave.strip(), valor.strip().strip('"').strip("'"))
+
+
+carregar_env()
 
 # Caminhos resolvidos a partir da raiz da aplicação: assim o app roda
 # corretamente independente do diretório de onde foi iniciado (gunicorn, IIS, etc).
@@ -116,9 +135,70 @@ def certificados():
     return render_template("certificado.html", certificados=carregar_certificados())
 
 
-@app.route("/contato")
+EMAIL_VALIDO = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
+
+
+def validar_contato(dados):
+    """Retorna um dicionário {campo: mensagem de erro} com os problemas encontrados."""
+    erros = {}
+    if len(dados["nome"]) < 2:
+        erros["nome"] = "Informe seu nome."
+    if not EMAIL_VALIDO.match(dados["email"]):
+        erros["email"] = "Informe um e-mail válido."
+    if len(dados["mensagem"]) < 10:
+        erros["mensagem"] = "Escreva uma mensagem com pelo menos 10 caracteres."
+    elif len(dados["mensagem"]) > 3000:
+        erros["mensagem"] = "A mensagem pode ter no máximo 3000 caracteres."
+    return erros
+
+
+def enviar_email_contato(dados):
+    """Envia a mensagem do formulário por SMTP usando as variáveis de ambiente."""
+    usuario = os.environ["SMTP_USUARIO"]
+    senha = os.environ["SMTP_SENHA"]
+    host = os.environ.get("SMTP_HOST", "smtp.gmail.com")
+    porta = int(os.environ.get("SMTP_PORTA", "587"))
+    destino = os.environ.get("EMAIL_DESTINO", usuario)
+
+    email = EmailMessage()
+    email["Subject"] = f"[Portfólio] Mensagem de {dados['nome']}"
+    email["From"] = usuario
+    email["To"] = destino
+    email["Reply-To"] = dados["email"]
+    email.set_content(f"Nome: {dados['nome']}\nE-mail: {dados['email']}\n\n{dados['mensagem']}")
+
+    with smtplib.SMTP(host, porta, timeout=15) as servidor:
+        servidor.starttls()
+        servidor.login(usuario, senha)
+        servidor.send_message(email)
+
+
+@app.route("/contato", methods=["GET", "POST"])
 def contato():
-    return render_template("contato.html")
+    if request.method == "GET":
+        return render_template("contato.html", dados={}, erros={})
+
+    dados = {
+        "nome": request.form.get("nome", "").strip(),
+        "email": request.form.get("email", "").strip(),
+        "mensagem": request.form.get("mensagem", "").strip(),
+    }
+
+    # O campo "site" fica escondido: só robôs de spam o preenchem.
+    if request.form.get("site"):
+        return render_template("contato.html", dados={}, erros={}, status="enviado")
+
+    erros = validar_contato(dados)
+    if erros:
+        return render_template("contato.html", dados=dados, erros=erros), 400
+
+    try:
+        enviar_email_contato(dados)
+    except (KeyError, OSError, smtplib.SMTPException) as erro:
+        app.logger.error("Falha ao enviar e-mail de contato: %s", erro)
+        return render_template("contato.html", dados=dados, erros={}, status="falha"), 500
+
+    return render_template("contato.html", dados={}, erros={}, status="enviado")
 
 
 @app.route("/projeto/<id>")
